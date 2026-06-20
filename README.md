@@ -1,5 +1,3 @@
-# <p align="center">🔮 Welcome to my GitHub Profile! 🔮</p>
-
 <p align="center">
   <img src="./banner.svg" alt="Trung Vi AI Engineer Banner" width="100%">
 </p>
@@ -8,14 +6,6 @@
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&duration=3000&pause=1000&color=00F2FE&center=true&vCenter=true&width=700&lines=Hi%2C+I'm+Trung+Vi+%F0%9F%91%8B;AI+Engineer;Deep+Learning+%26+LLMs;Building+Intelligent+Systems" alt="Typing SVG" />
   </a>
-</p>
-
----
-
-### <p align="center">👨‍💻 About Me</p>
-
-<p align="center">
-  I am an <b>AI Engineer</b> dedicated to building smart, efficient, and scalable systems. My expertise spans across training complex deep learning architectures, building advanced Retrieval-Augmented Generation (RAG) pipelines, creating autonomous AI agents, and deploying MLOps solutions.
 </p>
 
 <p align="center">
