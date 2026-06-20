@@ -1,0 +1,988 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="100%" height="100%">
+  <style>
+    /* Theme color adaptation */
+    :root {
+      --bg-color: transparent;
+      --dino-color: #39ff14;
+      --ground-color: #30363d;
+      --decor-color: #21262d;
+      
+      /* Rainbow letters - Dark Theme */
+      --color-t: #ff7b72;
+      --color-r: #f0883e;
+      --color-u: #ffeb3b;
+      --color-n: #39ff14;
+      --color-g: #58a6ff;
+      --color-v: #bc8cff;
+      --color-i: #ff79c6;
+    }
+    
+    @media (prefers-color-scheme: light) {
+      :root {
+        --dino-color: #24292f;
+        --ground-color: #d0d7de;
+        --decor-color: #afb8c1;
+        
+        /* Rainbow letters - Light Theme */
+        --color-t: #cf222e;
+        --color-r: #bc4c00;
+        --color-u: #8250df;
+        --color-n: #1a7f37;
+        --color-g: #0969da;
+        --color-v: #8250df;
+        --color-i: #bf3989;
+      }
+    }
+
+    .dino-color { fill: var(--dino-color); }
+    .ground-color { stroke: var(--ground-color); stroke-width: 2; fill: none; }
+    .decor-color { fill: var(--decor-color); }
+    
+    /* Letter colors */
+    .color-t { fill: var(--color-t); }
+    .color-r { fill: var(--color-r); }
+    .color-u { fill: var(--color-u); }
+    .color-n { fill: var(--color-n); }
+    .color-g { fill: var(--color-g); }
+    .color-v { fill: var(--color-v); }
+    .color-i { fill: var(--color-i); }
+
+    /* Base layouts */
+    .letters-group {
+      display: flex;
+    }
+
+    /* Dino movement path */
+    .dino-container {
+      animation: move-x 12s linear infinite;
+    }
+    
+    .dino-y {
+      animation: jump 12s linear infinite;
+    }
+
+    @keyframes move-x {
+      0% { transform: translateX(-60px); }
+      100% { transform: translateX(860px); }
+    }
+
+    @keyframes jump {
+      0% { transform: translateY(0); }
+      23.00% { transform: translateY(0); animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+      25.10% { transform: translateY(-60px); animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53); }
+      27.20% { transform: translateY(0); }
+      30.10% { transform: translateY(0); animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+      32.20% { transform: translateY(-60px); animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53); }
+      34.20% { transform: translateY(0); }
+      37.20% { transform: translateY(0); animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+      39.20% { transform: translateY(-60px); animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53); }
+      41.30% { transform: translateY(0); }
+      44.20% { transform: translateY(0); animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+      46.30% { transform: translateY(-60px); animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53); }
+      48.40% { transform: translateY(0); }
+      51.25% { transform: translateY(0); animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+      53.30% { transform: translateY(-60px); animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53); }
+      55.40% { transform: translateY(0); }
+      58.30% { transform: translateY(0); animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+      60.40% { transform: translateY(-60px); animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53); }
+      62.50% { transform: translateY(0); }
+      65.40% { transform: translateY(0); animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+      67.50% { transform: translateY(-60px); animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53); }
+      69.60% { transform: translateY(0); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Dino leg frame switches */
+    @keyframes run1 {
+      0.00% { opacity: 1; }
+      0.42% { opacity: 1; }
+      0.83% { opacity: 1; }
+      1.25% { opacity: 0; }
+      1.67% { opacity: 0; }
+      2.08% { opacity: 1; }
+      2.50% { opacity: 1; }
+      2.92% { opacity: 1; }
+      3.33% { opacity: 0; }
+      3.75% { opacity: 0; }
+      4.17% { opacity: 1; }
+      4.58% { opacity: 1; }
+      5.00% { opacity: 0; }
+      5.42% { opacity: 0; }
+      5.83% { opacity: 0; }
+      6.25% { opacity: 1; }
+      6.67% { opacity: 1; }
+      7.08% { opacity: 0; }
+      7.50% { opacity: 0; }
+      7.92% { opacity: 0; }
+      8.33% { opacity: 1; }
+      8.75% { opacity: 1; }
+      9.17% { opacity: 0; }
+      9.58% { opacity: 0; }
+      10.00% { opacity: 1; }
+      10.42% { opacity: 1; }
+      10.83% { opacity: 1; }
+      11.25% { opacity: 0; }
+      11.67% { opacity: 0; }
+      12.08% { opacity: 1; }
+      12.50% { opacity: 1; }
+      12.92% { opacity: 1; }
+      13.33% { opacity: 0; }
+      13.75% { opacity: 0; }
+      14.17% { opacity: 1; }
+      14.58% { opacity: 1; }
+      15.00% { opacity: 0; }
+      15.42% { opacity: 0; }
+      15.83% { opacity: 0; }
+      16.25% { opacity: 1; }
+      16.67% { opacity: 1; }
+      17.08% { opacity: 0; }
+      17.50% { opacity: 0; }
+      17.92% { opacity: 0; }
+      18.33% { opacity: 1; }
+      18.75% { opacity: 1; }
+      19.17% { opacity: 0; }
+      19.58% { opacity: 0; }
+      20.00% { opacity: 1; }
+      20.42% { opacity: 1; }
+      20.83% { opacity: 1; }
+      21.25% { opacity: 0; }
+      21.67% { opacity: 0; }
+      22.08% { opacity: 1; }
+      22.50% { opacity: 1; }
+      22.92% { opacity: 1; }
+      23.33% { opacity: 0; }
+      23.75% { opacity: 0; }
+      24.17% { opacity: 0; }
+      24.58% { opacity: 0; }
+      25.00% { opacity: 0; }
+      25.42% { opacity: 0; }
+      25.83% { opacity: 0; }
+      26.25% { opacity: 0; }
+      26.67% { opacity: 0; }
+      27.08% { opacity: 0; }
+      27.50% { opacity: 0; }
+      27.92% { opacity: 0; }
+      28.33% { opacity: 1; }
+      28.75% { opacity: 1; }
+      29.17% { opacity: 0; }
+      29.58% { opacity: 0; }
+      30.00% { opacity: 1; }
+      30.42% { opacity: 0; }
+      30.83% { opacity: 0; }
+      31.25% { opacity: 0; }
+      31.67% { opacity: 0; }
+      32.08% { opacity: 0; }
+      32.50% { opacity: 0; }
+      32.92% { opacity: 0; }
+      33.33% { opacity: 0; }
+      33.75% { opacity: 0; }
+      34.17% { opacity: 0; }
+      34.58% { opacity: 1; }
+      35.00% { opacity: 0; }
+      35.42% { opacity: 0; }
+      35.83% { opacity: 0; }
+      36.25% { opacity: 1; }
+      36.67% { opacity: 1; }
+      37.08% { opacity: 0; }
+      37.50% { opacity: 0; }
+      37.92% { opacity: 0; }
+      38.33% { opacity: 0; }
+      38.75% { opacity: 0; }
+      39.17% { opacity: 0; }
+      39.58% { opacity: 0; }
+      40.00% { opacity: 0; }
+      40.42% { opacity: 0; }
+      40.83% { opacity: 0; }
+      41.25% { opacity: 0; }
+      41.67% { opacity: 0; }
+      42.08% { opacity: 1; }
+      42.50% { opacity: 1; }
+      42.92% { opacity: 1; }
+      43.33% { opacity: 0; }
+      43.75% { opacity: 0; }
+      44.17% { opacity: 1; }
+      44.58% { opacity: 0; }
+      45.00% { opacity: 0; }
+      45.42% { opacity: 0; }
+      45.83% { opacity: 0; }
+      46.25% { opacity: 0; }
+      46.67% { opacity: 0; }
+      47.08% { opacity: 0; }
+      47.50% { opacity: 0; }
+      47.92% { opacity: 0; }
+      48.33% { opacity: 0; }
+      48.75% { opacity: 1; }
+      49.17% { opacity: 0; }
+      49.58% { opacity: 0; }
+      50.00% { opacity: 1; }
+      50.42% { opacity: 1; }
+      50.83% { opacity: 1; }
+      51.25% { opacity: 0; }
+      51.67% { opacity: 0; }
+      52.08% { opacity: 0; }
+      52.50% { opacity: 0; }
+      52.92% { opacity: 0; }
+      53.33% { opacity: 0; }
+      53.75% { opacity: 0; }
+      54.17% { opacity: 0; }
+      54.58% { opacity: 0; }
+      55.00% { opacity: 0; }
+      55.42% { opacity: 0; }
+      55.83% { opacity: 0; }
+      56.25% { opacity: 1; }
+      56.67% { opacity: 1; }
+      57.08% { opacity: 0; }
+      57.50% { opacity: 0; }
+      57.92% { opacity: 0; }
+      58.33% { opacity: 0; }
+      58.75% { opacity: 0; }
+      59.17% { opacity: 0; }
+      59.58% { opacity: 0; }
+      60.00% { opacity: 0; }
+      60.42% { opacity: 0; }
+      60.83% { opacity: 0; }
+      61.25% { opacity: 0; }
+      61.67% { opacity: 0; }
+      62.08% { opacity: 0; }
+      62.50% { opacity: 0; }
+      62.92% { opacity: 1; }
+      63.33% { opacity: 0; }
+      63.75% { opacity: 0; }
+      64.17% { opacity: 1; }
+      64.58% { opacity: 1; }
+      65.00% { opacity: 0; }
+      65.42% { opacity: 0; }
+      65.83% { opacity: 0; }
+      66.25% { opacity: 0; }
+      66.67% { opacity: 0; }
+      67.08% { opacity: 0; }
+      67.50% { opacity: 0; }
+      67.92% { opacity: 0; }
+      68.33% { opacity: 0; }
+      68.75% { opacity: 0; }
+      69.17% { opacity: 0; }
+      69.58% { opacity: 0; }
+      70.00% { opacity: 1; }
+      70.42% { opacity: 1; }
+      70.83% { opacity: 1; }
+      71.25% { opacity: 0; }
+      71.67% { opacity: 0; }
+      72.08% { opacity: 1; }
+      72.50% { opacity: 1; }
+      72.92% { opacity: 1; }
+      73.33% { opacity: 0; }
+      73.75% { opacity: 0; }
+      74.17% { opacity: 1; }
+      74.58% { opacity: 1; }
+      75.00% { opacity: 0; }
+      75.42% { opacity: 0; }
+      75.83% { opacity: 0; }
+      76.25% { opacity: 1; }
+      76.67% { opacity: 1; }
+      77.08% { opacity: 0; }
+      77.50% { opacity: 0; }
+      77.92% { opacity: 0; }
+      78.33% { opacity: 1; }
+      78.75% { opacity: 1; }
+      79.17% { opacity: 0; }
+      79.58% { opacity: 0; }
+      80.00% { opacity: 1; }
+      80.42% { opacity: 1; }
+      80.83% { opacity: 1; }
+      81.25% { opacity: 0; }
+      81.67% { opacity: 0; }
+      82.08% { opacity: 1; }
+      82.50% { opacity: 1; }
+      82.92% { opacity: 1; }
+      83.33% { opacity: 0; }
+      83.75% { opacity: 0; }
+      84.17% { opacity: 1; }
+      84.58% { opacity: 1; }
+      85.00% { opacity: 0; }
+      85.42% { opacity: 0; }
+      85.83% { opacity: 0; }
+      86.25% { opacity: 1; }
+      86.67% { opacity: 1; }
+      87.08% { opacity: 0; }
+      87.50% { opacity: 0; }
+      87.92% { opacity: 0; }
+      88.33% { opacity: 1; }
+      88.75% { opacity: 1; }
+      89.17% { opacity: 0; }
+      89.58% { opacity: 0; }
+      90.00% { opacity: 1; }
+      90.42% { opacity: 1; }
+      90.83% { opacity: 1; }
+      91.25% { opacity: 0; }
+      91.67% { opacity: 0; }
+      92.08% { opacity: 1; }
+      92.50% { opacity: 1; }
+      92.92% { opacity: 1; }
+      93.33% { opacity: 0; }
+      93.75% { opacity: 0; }
+      94.17% { opacity: 1; }
+      94.58% { opacity: 1; }
+      95.00% { opacity: 0; }
+      95.42% { opacity: 0; }
+      95.83% { opacity: 0; }
+      96.25% { opacity: 1; }
+      96.67% { opacity: 1; }
+      97.08% { opacity: 0; }
+      97.50% { opacity: 0; }
+      97.92% { opacity: 0; }
+      98.33% { opacity: 1; }
+      98.75% { opacity: 1; }
+      99.17% { opacity: 0; }
+      99.58% { opacity: 0; }
+      100.00% { opacity: 1; }
+    }
+
+    @keyframes run2 {
+      0.00% { opacity: 0; }
+      0.42% { opacity: 0; }
+      0.83% { opacity: 0; }
+      1.25% { opacity: 1; }
+      1.67% { opacity: 1; }
+      2.08% { opacity: 0; }
+      2.50% { opacity: 0; }
+      2.92% { opacity: 0; }
+      3.33% { opacity: 1; }
+      3.75% { opacity: 1; }
+      4.17% { opacity: 0; }
+      4.58% { opacity: 0; }
+      5.00% { opacity: 1; }
+      5.42% { opacity: 1; }
+      5.83% { opacity: 1; }
+      6.25% { opacity: 0; }
+      6.67% { opacity: 0; }
+      7.08% { opacity: 1; }
+      7.50% { opacity: 1; }
+      7.92% { opacity: 1; }
+      8.33% { opacity: 0; }
+      8.75% { opacity: 0; }
+      9.17% { opacity: 1; }
+      9.58% { opacity: 1; }
+      10.00% { opacity: 0; }
+      10.42% { opacity: 0; }
+      10.83% { opacity: 0; }
+      11.25% { opacity: 1; }
+      11.67% { opacity: 1; }
+      12.08% { opacity: 0; }
+      12.50% { opacity: 0; }
+      12.92% { opacity: 0; }
+      13.33% { opacity: 1; }
+      13.75% { opacity: 1; }
+      14.17% { opacity: 0; }
+      14.58% { opacity: 0; }
+      15.00% { opacity: 1; }
+      15.42% { opacity: 1; }
+      15.83% { opacity: 1; }
+      16.25% { opacity: 0; }
+      16.67% { opacity: 0; }
+      17.08% { opacity: 1; }
+      17.50% { opacity: 1; }
+      17.92% { opacity: 1; }
+      18.33% { opacity: 0; }
+      18.75% { opacity: 0; }
+      19.17% { opacity: 1; }
+      19.58% { opacity: 1; }
+      20.00% { opacity: 0; }
+      20.42% { opacity: 0; }
+      20.83% { opacity: 0; }
+      21.25% { opacity: 1; }
+      21.67% { opacity: 1; }
+      22.08% { opacity: 0; }
+      22.50% { opacity: 0; }
+      22.92% { opacity: 0; }
+      23.33% { opacity: 0; }
+      23.75% { opacity: 0; }
+      24.17% { opacity: 0; }
+      24.58% { opacity: 0; }
+      25.00% { opacity: 0; }
+      25.42% { opacity: 0; }
+      25.83% { opacity: 0; }
+      26.25% { opacity: 0; }
+      26.67% { opacity: 0; }
+      27.08% { opacity: 0; }
+      27.50% { opacity: 1; }
+      27.92% { opacity: 1; }
+      28.33% { opacity: 0; }
+      28.75% { opacity: 0; }
+      29.17% { opacity: 1; }
+      29.58% { opacity: 1; }
+      30.00% { opacity: 0; }
+      30.42% { opacity: 0; }
+      30.83% { opacity: 0; }
+      31.25% { opacity: 0; }
+      31.67% { opacity: 0; }
+      32.08% { opacity: 0; }
+      32.50% { opacity: 0; }
+      32.92% { opacity: 0; }
+      33.33% { opacity: 0; }
+      33.75% { opacity: 0; }
+      34.17% { opacity: 0; }
+      34.58% { opacity: 0; }
+      35.00% { opacity: 1; }
+      35.42% { opacity: 1; }
+      35.83% { opacity: 1; }
+      36.25% { opacity: 0; }
+      36.67% { opacity: 0; }
+      37.08% { opacity: 1; }
+      37.50% { opacity: 0; }
+      37.92% { opacity: 0; }
+      38.33% { opacity: 0; }
+      38.75% { opacity: 0; }
+      39.17% { opacity: 0; }
+      39.58% { opacity: 0; }
+      40.00% { opacity: 0; }
+      40.42% { opacity: 0; }
+      40.83% { opacity: 0; }
+      41.25% { opacity: 0; }
+      41.67% { opacity: 1; }
+      42.08% { opacity: 0; }
+      42.50% { opacity: 0; }
+      42.92% { opacity: 0; }
+      43.33% { opacity: 1; }
+      43.75% { opacity: 1; }
+      44.17% { opacity: 0; }
+      44.58% { opacity: 0; }
+      45.00% { opacity: 0; }
+      45.42% { opacity: 0; }
+      45.83% { opacity: 0; }
+      46.25% { opacity: 0; }
+      46.67% { opacity: 0; }
+      47.08% { opacity: 0; }
+      47.50% { opacity: 0; }
+      47.92% { opacity: 0; }
+      48.33% { opacity: 0; }
+      48.75% { opacity: 0; }
+      49.17% { opacity: 1; }
+      49.58% { opacity: 1; }
+      50.00% { opacity: 0; }
+      50.42% { opacity: 0; }
+      50.83% { opacity: 0; }
+      51.25% { opacity: 0; }
+      51.67% { opacity: 0; }
+      52.08% { opacity: 0; }
+      52.50% { opacity: 0; }
+      52.92% { opacity: 0; }
+      53.33% { opacity: 0; }
+      53.75% { opacity: 0; }
+      54.17% { opacity: 0; }
+      54.58% { opacity: 0; }
+      55.00% { opacity: 0; }
+      55.42% { opacity: 0; }
+      55.83% { opacity: 1; }
+      56.25% { opacity: 0; }
+      56.67% { opacity: 0; }
+      57.08% { opacity: 1; }
+      57.50% { opacity: 1; }
+      57.92% { opacity: 1; }
+      58.33% { opacity: 0; }
+      58.75% { opacity: 0; }
+      59.17% { opacity: 0; }
+      59.58% { opacity: 0; }
+      60.00% { opacity: 0; }
+      60.42% { opacity: 0; }
+      60.83% { opacity: 0; }
+      61.25% { opacity: 0; }
+      61.67% { opacity: 0; }
+      62.08% { opacity: 0; }
+      62.50% { opacity: 0; }
+      62.92% { opacity: 0; }
+      63.33% { opacity: 1; }
+      63.75% { opacity: 1; }
+      64.17% { opacity: 0; }
+      64.58% { opacity: 0; }
+      65.00% { opacity: 1; }
+      65.42% { opacity: 0; }
+      65.83% { opacity: 0; }
+      66.25% { opacity: 0; }
+      66.67% { opacity: 0; }
+      67.08% { opacity: 0; }
+      67.50% { opacity: 0; }
+      67.92% { opacity: 0; }
+      68.33% { opacity: 0; }
+      68.75% { opacity: 0; }
+      69.17% { opacity: 0; }
+      69.58% { opacity: 0; }
+      70.00% { opacity: 0; }
+      70.42% { opacity: 0; }
+      70.83% { opacity: 0; }
+      71.25% { opacity: 1; }
+      71.67% { opacity: 1; }
+      72.08% { opacity: 0; }
+      72.50% { opacity: 0; }
+      72.92% { opacity: 0; }
+      73.33% { opacity: 1; }
+      73.75% { opacity: 1; }
+      74.17% { opacity: 0; }
+      74.58% { opacity: 0; }
+      75.00% { opacity: 1; }
+      75.42% { opacity: 1; }
+      75.83% { opacity: 1; }
+      76.25% { opacity: 0; }
+      76.67% { opacity: 0; }
+      77.08% { opacity: 1; }
+      77.50% { opacity: 1; }
+      77.92% { opacity: 1; }
+      78.33% { opacity: 0; }
+      78.75% { opacity: 0; }
+      79.17% { opacity: 1; }
+      79.58% { opacity: 1; }
+      80.00% { opacity: 0; }
+      80.42% { opacity: 0; }
+      80.83% { opacity: 0; }
+      81.25% { opacity: 1; }
+      81.67% { opacity: 1; }
+      82.08% { opacity: 0; }
+      82.50% { opacity: 0; }
+      82.92% { opacity: 0; }
+      83.33% { opacity: 1; }
+      83.75% { opacity: 1; }
+      84.17% { opacity: 0; }
+      84.58% { opacity: 0; }
+      85.00% { opacity: 1; }
+      85.42% { opacity: 1; }
+      85.83% { opacity: 1; }
+      86.25% { opacity: 0; }
+      86.67% { opacity: 0; }
+      87.08% { opacity: 1; }
+      87.50% { opacity: 1; }
+      87.92% { opacity: 1; }
+      88.33% { opacity: 0; }
+      88.75% { opacity: 0; }
+      89.17% { opacity: 1; }
+      89.58% { opacity: 1; }
+      90.00% { opacity: 0; }
+      90.42% { opacity: 0; }
+      90.83% { opacity: 0; }
+      91.25% { opacity: 1; }
+      91.67% { opacity: 1; }
+      92.08% { opacity: 0; }
+      92.50% { opacity: 0; }
+      92.92% { opacity: 0; }
+      93.33% { opacity: 1; }
+      93.75% { opacity: 1; }
+      94.17% { opacity: 0; }
+      94.58% { opacity: 0; }
+      95.00% { opacity: 1; }
+      95.42% { opacity: 1; }
+      95.83% { opacity: 1; }
+      96.25% { opacity: 0; }
+      96.67% { opacity: 0; }
+      97.08% { opacity: 1; }
+      97.50% { opacity: 1; }
+      97.92% { opacity: 1; }
+      98.33% { opacity: 0; }
+      98.75% { opacity: 0; }
+      99.17% { opacity: 1; }
+      99.58% { opacity: 1; }
+      100.00% { opacity: 0; }
+    }
+
+    @keyframes jump-frame {
+      0.00% { opacity: 0; }
+      0.42% { opacity: 0; }
+      0.83% { opacity: 0; }
+      1.25% { opacity: 0; }
+      1.67% { opacity: 0; }
+      2.08% { opacity: 0; }
+      2.50% { opacity: 0; }
+      2.92% { opacity: 0; }
+      3.33% { opacity: 0; }
+      3.75% { opacity: 0; }
+      4.17% { opacity: 0; }
+      4.58% { opacity: 0; }
+      5.00% { opacity: 0; }
+      5.42% { opacity: 0; }
+      5.83% { opacity: 0; }
+      6.25% { opacity: 0; }
+      6.67% { opacity: 0; }
+      7.08% { opacity: 0; }
+      7.50% { opacity: 0; }
+      7.92% { opacity: 0; }
+      8.33% { opacity: 0; }
+      8.75% { opacity: 0; }
+      9.17% { opacity: 0; }
+      9.58% { opacity: 0; }
+      10.00% { opacity: 0; }
+      10.42% { opacity: 0; }
+      10.83% { opacity: 0; }
+      11.25% { opacity: 0; }
+      11.67% { opacity: 0; }
+      12.08% { opacity: 0; }
+      12.50% { opacity: 0; }
+      12.92% { opacity: 0; }
+      13.33% { opacity: 0; }
+      13.75% { opacity: 0; }
+      14.17% { opacity: 0; }
+      14.58% { opacity: 0; }
+      15.00% { opacity: 0; }
+      15.42% { opacity: 0; }
+      15.83% { opacity: 0; }
+      16.25% { opacity: 0; }
+      16.67% { opacity: 0; }
+      17.08% { opacity: 0; }
+      17.50% { opacity: 0; }
+      17.92% { opacity: 0; }
+      18.33% { opacity: 0; }
+      18.75% { opacity: 0; }
+      19.17% { opacity: 0; }
+      19.58% { opacity: 0; }
+      20.00% { opacity: 0; }
+      20.42% { opacity: 0; }
+      20.83% { opacity: 0; }
+      21.25% { opacity: 0; }
+      21.67% { opacity: 0; }
+      22.08% { opacity: 0; }
+      22.50% { opacity: 0; }
+      22.92% { opacity: 0; }
+      23.33% { opacity: 1; }
+      23.75% { opacity: 1; }
+      24.17% { opacity: 1; }
+      24.58% { opacity: 1; }
+      25.00% { opacity: 1; }
+      25.42% { opacity: 1; }
+      25.83% { opacity: 1; }
+      26.25% { opacity: 1; }
+      26.67% { opacity: 1; }
+      27.08% { opacity: 1; }
+      27.50% { opacity: 0; }
+      27.92% { opacity: 0; }
+      28.33% { opacity: 0; }
+      28.75% { opacity: 0; }
+      29.17% { opacity: 0; }
+      29.58% { opacity: 0; }
+      30.00% { opacity: 0; }
+      30.42% { opacity: 1; }
+      30.83% { opacity: 1; }
+      31.25% { opacity: 1; }
+      31.67% { opacity: 1; }
+      32.08% { opacity: 1; }
+      32.50% { opacity: 1; }
+      32.92% { opacity: 1; }
+      33.33% { opacity: 1; }
+      33.75% { opacity: 1; }
+      34.17% { opacity: 1; }
+      34.58% { opacity: 0; }
+      35.00% { opacity: 0; }
+      35.42% { opacity: 0; }
+      35.83% { opacity: 0; }
+      36.25% { opacity: 0; }
+      36.67% { opacity: 0; }
+      37.08% { opacity: 0; }
+      37.50% { opacity: 1; }
+      37.92% { opacity: 1; }
+      38.33% { opacity: 1; }
+      38.75% { opacity: 1; }
+      39.17% { opacity: 1; }
+      39.58% { opacity: 1; }
+      40.00% { opacity: 1; }
+      40.42% { opacity: 1; }
+      40.83% { opacity: 1; }
+      41.25% { opacity: 1; }
+      41.67% { opacity: 0; }
+      42.08% { opacity: 0; }
+      42.50% { opacity: 0; }
+      42.92% { opacity: 0; }
+      43.33% { opacity: 0; }
+      43.75% { opacity: 0; }
+      44.17% { opacity: 0; }
+      44.58% { opacity: 1; }
+      45.00% { opacity: 1; }
+      45.42% { opacity: 1; }
+      45.83% { opacity: 1; }
+      46.25% { opacity: 1; }
+      46.67% { opacity: 1; }
+      47.08% { opacity: 1; }
+      47.50% { opacity: 1; }
+      47.92% { opacity: 1; }
+      48.33% { opacity: 1; }
+      48.75% { opacity: 0; }
+      49.17% { opacity: 0; }
+      49.58% { opacity: 0; }
+      50.00% { opacity: 0; }
+      50.42% { opacity: 0; }
+      50.83% { opacity: 0; }
+      51.25% { opacity: 1; }
+      51.67% { opacity: 1; }
+      52.08% { opacity: 1; }
+      52.50% { opacity: 1; }
+      52.92% { opacity: 1; }
+      53.33% { opacity: 1; }
+      53.75% { opacity: 1; }
+      54.17% { opacity: 1; }
+      54.58% { opacity: 1; }
+      55.00% { opacity: 1; }
+      55.42% { opacity: 1; }
+      55.83% { opacity: 0; }
+      56.25% { opacity: 0; }
+      56.67% { opacity: 0; }
+      57.08% { opacity: 0; }
+      57.50% { opacity: 0; }
+      57.92% { opacity: 0; }
+      58.33% { opacity: 1; }
+      58.75% { opacity: 1; }
+      59.17% { opacity: 1; }
+      59.58% { opacity: 1; }
+      60.00% { opacity: 1; }
+      60.42% { opacity: 1; }
+      60.83% { opacity: 1; }
+      61.25% { opacity: 1; }
+      61.67% { opacity: 1; }
+      62.08% { opacity: 1; }
+      62.50% { opacity: 1; }
+      62.92% { opacity: 0; }
+      63.33% { opacity: 0; }
+      63.75% { opacity: 0; }
+      64.17% { opacity: 0; }
+      64.58% { opacity: 0; }
+      65.00% { opacity: 0; }
+      65.42% { opacity: 1; }
+      65.83% { opacity: 1; }
+      66.25% { opacity: 1; }
+      66.67% { opacity: 1; }
+      67.08% { opacity: 1; }
+      67.50% { opacity: 1; }
+      67.92% { opacity: 1; }
+      68.33% { opacity: 1; }
+      68.75% { opacity: 1; }
+      69.17% { opacity: 1; }
+      69.58% { opacity: 1; }
+      70.00% { opacity: 0; }
+      70.42% { opacity: 0; }
+      70.83% { opacity: 0; }
+      71.25% { opacity: 0; }
+      71.67% { opacity: 0; }
+      72.08% { opacity: 0; }
+      72.50% { opacity: 0; }
+      72.92% { opacity: 0; }
+      73.33% { opacity: 0; }
+      73.75% { opacity: 0; }
+      74.17% { opacity: 0; }
+      74.58% { opacity: 0; }
+      75.00% { opacity: 0; }
+      75.42% { opacity: 0; }
+      75.83% { opacity: 0; }
+      76.25% { opacity: 0; }
+      76.67% { opacity: 0; }
+      77.08% { opacity: 0; }
+      77.50% { opacity: 0; }
+      77.92% { opacity: 0; }
+      78.33% { opacity: 0; }
+      78.75% { opacity: 0; }
+      79.17% { opacity: 0; }
+      79.58% { opacity: 0; }
+      80.00% { opacity: 0; }
+      80.42% { opacity: 0; }
+      80.83% { opacity: 0; }
+      81.25% { opacity: 0; }
+      81.67% { opacity: 0; }
+      82.08% { opacity: 0; }
+      82.50% { opacity: 0; }
+      82.92% { opacity: 0; }
+      83.33% { opacity: 0; }
+      83.75% { opacity: 0; }
+      84.17% { opacity: 0; }
+      84.58% { opacity: 0; }
+      85.00% { opacity: 0; }
+      85.42% { opacity: 0; }
+      85.83% { opacity: 0; }
+      86.25% { opacity: 0; }
+      86.67% { opacity: 0; }
+      87.08% { opacity: 0; }
+      87.50% { opacity: 0; }
+      87.92% { opacity: 0; }
+      88.33% { opacity: 0; }
+      88.75% { opacity: 0; }
+      89.17% { opacity: 0; }
+      89.58% { opacity: 0; }
+      90.00% { opacity: 0; }
+      90.42% { opacity: 0; }
+      90.83% { opacity: 0; }
+      91.25% { opacity: 0; }
+      91.67% { opacity: 0; }
+      92.08% { opacity: 0; }
+      92.50% { opacity: 0; }
+      92.92% { opacity: 0; }
+      93.33% { opacity: 0; }
+      93.75% { opacity: 0; }
+      94.17% { opacity: 0; }
+      94.58% { opacity: 0; }
+      95.00% { opacity: 0; }
+      95.42% { opacity: 0; }
+      95.83% { opacity: 0; }
+      96.25% { opacity: 0; }
+      96.67% { opacity: 0; }
+      97.08% { opacity: 0; }
+      97.50% { opacity: 0; }
+      97.92% { opacity: 0; }
+      98.33% { opacity: 0; }
+      98.75% { opacity: 0; }
+      99.17% { opacity: 0; }
+      99.58% { opacity: 0; }
+      100.00% { opacity: 0; }
+    }
+
+    .dino-run1 { animation: run1 12s step-end infinite; }
+    .dino-run2 { animation: run2 12s step-end infinite; }
+    .dino-jump { animation: jump-frame 12s step-end infinite; }
+    
+
+    @keyframes bounce-t {
+      0% { transform: scale(1); }
+      22.17% { transform: scale(1); }
+      25.08% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
+      27.17% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      28.83% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .letter-t {
+      animation: bounce-t 12s infinite ease-in-out;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+    }
+
+    @keyframes bounce-r {
+      0% { transform: scale(1); }
+      29.25% { transform: scale(1); }
+      32.17% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
+      34.25% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      35.92% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .letter-r {
+      animation: bounce-r 12s infinite ease-in-out;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+    }
+
+    @keyframes bounce-u {
+      0% { transform: scale(1); }
+      36.33% { transform: scale(1); }
+      39.25% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
+      41.33% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      43.00% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .letter-u {
+      animation: bounce-u 12s infinite ease-in-out;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+    }
+
+    @keyframes bounce-n {
+      0% { transform: scale(1); }
+      43.42% { transform: scale(1); }
+      46.33% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
+      48.42% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      50.08% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .letter-n {
+      animation: bounce-n 12s infinite ease-in-out;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+    }
+
+    @keyframes bounce-g {
+      0% { transform: scale(1); }
+      50.42% { transform: scale(1); }
+      53.33% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
+      55.42% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      57.08% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .letter-g {
+      animation: bounce-g 12s infinite ease-in-out;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+    }
+
+    @keyframes bounce-v {
+      0% { transform: scale(1); }
+      57.50% { transform: scale(1); }
+      60.42% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
+      62.50% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      64.17% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .letter-v {
+      animation: bounce-v 12s infinite ease-in-out;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+    }
+
+    @keyframes bounce-i {
+      0% { transform: scale(1); }
+      64.58% { transform: scale(1); }
+      67.50% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
+      69.58% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      71.25% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .letter-i {
+      animation: bounce-i 12s infinite ease-in-out;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+    }
+  </style>
+
+  <!-- Background (Optional / Transparent by default) -->
+  <rect width="100%" height="100%" fill="var(--bg-color)" />
+
+  <!-- Ground -->
+  <path class="ground-color" d="M 0 150 H 800" />
+  <path class="decor-color" d="M 50 155 h 6 M 52 157 h 2 M 180 154 h 4 M 310 156 h 8 M 312 158 h 3 M 450 155 h 5 M 620 154 h 3 M 622 156 h 5 M 750 157 h 4" />
+
+  <!-- Letters "TRUNGVI" -->
+  <!-- Positioned at y = 122 (150 ground - 28 height) -->
+  <g transform="translate(200, 122)">
+    <g class="letter-t">
+      <path class="color-t" d="M 0 0 h 4 v 4 h -4 Z M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 8 4 h 4 v 4 h -4 Z M 8 8 h 4 v 4 h -4 Z M 8 12 h 4 v 4 h -4 Z M 8 16 h 4 v 4 h -4 Z M 8 20 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z" />
+    </g>
+  </g>
+  <g transform="translate(265, 122)">
+    <g class="letter-r">
+      <path class="color-r" d="M 0 0 h 4 v 4 h -4 Z M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 4 12 h 4 v 4 h -4 Z M 8 12 h 4 v 4 h -4 Z M 12 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 12 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 0 24 h 4 v 4 h -4 Z M 16 24 h 4 v 4 h -4 Z" />
+    </g>
+  </g>
+  <g transform="translate(330, 122)">
+    <g class="letter-u">
+      <path class="color-u" d="M 0 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 16 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 4 24 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z M 12 24 h 4 v 4 h -4 Z" />
+    </g>
+  </g>
+  <g transform="translate(395, 122)">
+    <g class="letter-n">
+      <path class="color-n" d="M 0 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 4 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 8 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 12 12 h 4 v 4 h -4 Z M 16 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 0 24 h 4 v 4 h -4 Z M 16 24 h 4 v 4 h -4 Z" />
+    </g>
+  </g>
+  <g transform="translate(460, 122)">
+    <g class="letter-g">
+      <path class="color-g" d="M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 8 12 h 4 v 4 h -4 Z M 12 12 h 4 v 4 h -4 Z M 16 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 4 24 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z M 12 24 h 4 v 4 h -4 Z" />
+    </g>
+  </g>
+  <g transform="translate(525, 122)">
+    <g class="letter-v">
+      <path class="color-v" d="M 0 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 16 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 4 20 h 4 v 4 h -4 Z M 12 20 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z" />
+    </g>
+  </g>
+  <g transform="translate(590, 122)">
+    <g class="letter-i">
+      <path class="color-i" d="M 0 0 h 4 v 4 h -4 Z M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 8 4 h 4 v 4 h -4 Z M 8 8 h 4 v 4 h -4 Z M 8 12 h 4 v 4 h -4 Z M 8 16 h 4 v 4 h -4 Z M 8 20 h 4 v 4 h -4 Z M 0 24 h 4 v 4 h -4 Z M 4 24 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z M 12 24 h 4 v 4 h -4 Z M 16 24 h 4 v 4 h -4 Z" />
+    </g>
+  </g>
+
+  <!-- Animated Dino -->
+  <!-- Base y offset puts Dino on the ground (150 ground - 40 dino height) -->
+  <g class="dino-container">
+    <g transform="translate(0, 110)">
+      <g class="dino-y">
+        <path class="dino-color dino-run1" d="M 24 0 h 2 v 2 h -2 Z M 26 0 h 2 v 2 h -2 Z M 28 0 h 2 v 2 h -2 Z M 30 0 h 2 v 2 h -2 Z M 32 0 h 2 v 2 h -2 Z M 34 0 h 2 v 2 h -2 Z M 36 0 h 2 v 2 h -2 Z M 38 0 h 2 v 2 h -2 Z M 22 2 h 2 v 2 h -2 Z M 24 2 h 2 v 2 h -2 Z M 26 2 h 2 v 2 h -2 Z M 28 2 h 2 v 2 h -2 Z M 30 2 h 2 v 2 h -2 Z M 32 2 h 2 v 2 h -2 Z M 34 2 h 2 v 2 h -2 Z M 36 2 h 2 v 2 h -2 Z M 38 2 h 2 v 2 h -2 Z M 40 2 h 2 v 2 h -2 Z M 22 4 h 2 v 2 h -2 Z M 24 4 h 2 v 2 h -2 Z M 28 4 h 2 v 2 h -2 Z M 30 4 h 2 v 2 h -2 Z M 32 4 h 2 v 2 h -2 Z M 34 4 h 2 v 2 h -2 Z M 36 4 h 2 v 2 h -2 Z M 38 4 h 2 v 2 h -2 Z M 40 4 h 2 v 2 h -2 Z M 22 6 h 2 v 2 h -2 Z M 24 6 h 2 v 2 h -2 Z M 26 6 h 2 v 2 h -2 Z M 28 6 h 2 v 2 h -2 Z M 30 6 h 2 v 2 h -2 Z M 32 6 h 2 v 2 h -2 Z M 34 6 h 2 v 2 h -2 Z M 36 6 h 2 v 2 h -2 Z M 38 6 h 2 v 2 h -2 Z M 40 6 h 2 v 2 h -2 Z M 22 8 h 2 v 2 h -2 Z M 24 8 h 2 v 2 h -2 Z M 26 8 h 2 v 2 h -2 Z M 28 8 h 2 v 2 h -2 Z M 30 8 h 2 v 2 h -2 Z M 32 8 h 2 v 2 h -2 Z M 22 10 h 2 v 2 h -2 Z M 24 10 h 2 v 2 h -2 Z M 26 10 h 2 v 2 h -2 Z M 28 10 h 2 v 2 h -2 Z M 2 12 h 2 v 2 h -2 Z M 22 12 h 2 v 2 h -2 Z M 24 12 h 2 v 2 h -2 Z M 26 12 h 2 v 2 h -2 Z M 28 12 h 2 v 2 h -2 Z M 30 12 h 2 v 2 h -2 Z M 32 12 h 2 v 2 h -2 Z M 2 14 h 2 v 2 h -2 Z M 4 14 h 2 v 2 h -2 Z M 20 14 h 2 v 2 h -2 Z M 22 14 h 2 v 2 h -2 Z M 24 14 h 2 v 2 h -2 Z M 26 14 h 2 v 2 h -2 Z M 28 14 h 2 v 2 h -2 Z M 2 16 h 2 v 2 h -2 Z M 4 16 h 2 v 2 h -2 Z M 6 16 h 2 v 2 h -2 Z M 18 16 h 2 v 2 h -2 Z M 20 16 h 2 v 2 h -2 Z M 22 16 h 2 v 2 h -2 Z M 24 16 h 2 v 2 h -2 Z M 26 16 h 2 v 2 h -2 Z M 28 16 h 2 v 2 h -2 Z M 30 16 h 2 v 2 h -2 Z M 32 16 h 2 v 2 h -2 Z M 34 16 h 2 v 2 h -2 Z M 2 18 h 2 v 2 h -2 Z M 4 18 h 2 v 2 h -2 Z M 6 18 h 2 v 2 h -2 Z M 8 18 h 2 v 2 h -2 Z M 16 18 h 2 v 2 h -2 Z M 18 18 h 2 v 2 h -2 Z M 20 18 h 2 v 2 h -2 Z M 22 18 h 2 v 2 h -2 Z M 24 18 h 2 v 2 h -2 Z M 26 18 h 2 v 2 h -2 Z M 28 18 h 2 v 2 h -2 Z M 30 18 h 2 v 2 h -2 Z M 32 18 h 2 v 2 h -2 Z M 34 18 h 2 v 2 h -2 Z M 2 20 h 2 v 2 h -2 Z M 4 20 h 2 v 2 h -2 Z M 6 20 h 2 v 2 h -2 Z M 8 20 h 2 v 2 h -2 Z M 10 20 h 2 v 2 h -2 Z M 14 20 h 2 v 2 h -2 Z M 16 20 h 2 v 2 h -2 Z M 18 20 h 2 v 2 h -2 Z M 20 20 h 2 v 2 h -2 Z M 22 20 h 2 v 2 h -2 Z M 24 20 h 2 v 2 h -2 Z M 26 20 h 2 v 2 h -2 Z M 28 20 h 2 v 2 h -2 Z M 30 20 h 2 v 2 h -2 Z M 32 20 h 2 v 2 h -2 Z M 34 20 h 2 v 2 h -2 Z M 2 22 h 2 v 2 h -2 Z M 4 22 h 2 v 2 h -2 Z M 6 22 h 2 v 2 h -2 Z M 8 22 h 2 v 2 h -2 Z M 10 22 h 2 v 2 h -2 Z M 12 22 h 2 v 2 h -2 Z M 14 22 h 2 v 2 h -2 Z M 16 22 h 2 v 2 h -2 Z M 18 22 h 2 v 2 h -2 Z M 20 22 h 2 v 2 h -2 Z M 22 22 h 2 v 2 h -2 Z M 24 22 h 2 v 2 h -2 Z M 26 22 h 2 v 2 h -2 Z M 28 22 h 2 v 2 h -2 Z M 30 22 h 2 v 2 h -2 Z M 32 22 h 2 v 2 h -2 Z M 4 24 h 2 v 2 h -2 Z M 6 24 h 2 v 2 h -2 Z M 8 24 h 2 v 2 h -2 Z M 10 24 h 2 v 2 h -2 Z M 12 24 h 2 v 2 h -2 Z M 14 24 h 2 v 2 h -2 Z M 16 24 h 2 v 2 h -2 Z M 18 24 h 2 v 2 h -2 Z M 20 24 h 2 v 2 h -2 Z M 22 24 h 2 v 2 h -2 Z M 24 24 h 2 v 2 h -2 Z M 26 24 h 2 v 2 h -2 Z M 28 24 h 2 v 2 h -2 Z M 30 24 h 2 v 2 h -2 Z M 6 26 h 2 v 2 h -2 Z M 8 26 h 2 v 2 h -2 Z M 10 26 h 2 v 2 h -2 Z M 12 26 h 2 v 2 h -2 Z M 14 26 h 2 v 2 h -2 Z M 16 26 h 2 v 2 h -2 Z M 18 26 h 2 v 2 h -2 Z M 20 26 h 2 v 2 h -2 Z M 22 26 h 2 v 2 h -2 Z M 24 26 h 2 v 2 h -2 Z M 26 26 h 2 v 2 h -2 Z M 28 26 h 2 v 2 h -2 Z M 8 28 h 2 v 2 h -2 Z M 10 28 h 2 v 2 h -2 Z M 12 28 h 2 v 2 h -2 Z M 14 28 h 2 v 2 h -2 Z M 16 28 h 2 v 2 h -2 Z M 18 28 h 2 v 2 h -2 Z M 20 28 h 2 v 2 h -2 Z M 22 28 h 2 v 2 h -2 Z M 24 28 h 2 v 2 h -2 Z M 26 28 h 2 v 2 h -2 Z M 10 30 h 2 v 2 h -2 Z M 12 30 h 2 v 2 h -2 Z M 14 30 h 2 v 2 h -2 Z M 16 30 h 2 v 2 h -2 Z M 18 30 h 2 v 2 h -2 Z M 20 30 h 2 v 2 h -2 Z M 22 30 h 2 v 2 h -2 Z M 24 30 h 2 v 2 h -2 Z M 12 32 h 2 v 2 h -2 Z M 14 32 h 2 v 2 h -2 Z M 16 32 h 2 v 2 h -2 Z M 18 32 h 2 v 2 h -2 Z M 20 32 h 2 v 2 h -2 Z M 22 32 h 2 v 2 h -2 Z M 14 34 h 2 v 2 h -2 Z M 16 34 h 2 v 2 h -2 Z M 20 34 h 2 v 2 h -2 Z M 22 34 h 2 v 2 h -2 Z M 14 36 h 2 v 2 h -2 Z M 16 36 h 2 v 2 h -2 Z M 14 38 h 2 v 2 h -2 Z M 16 38 h 2 v 2 h -2 Z" />
+        <path class="dino-color dino-run2" d="M 24 0 h 2 v 2 h -2 Z M 26 0 h 2 v 2 h -2 Z M 28 0 h 2 v 2 h -2 Z M 30 0 h 2 v 2 h -2 Z M 32 0 h 2 v 2 h -2 Z M 34 0 h 2 v 2 h -2 Z M 36 0 h 2 v 2 h -2 Z M 38 0 h 2 v 2 h -2 Z M 22 2 h 2 v 2 h -2 Z M 24 2 h 2 v 2 h -2 Z M 26 2 h 2 v 2 h -2 Z M 28 2 h 2 v 2 h -2 Z M 30 2 h 2 v 2 h -2 Z M 32 2 h 2 v 2 h -2 Z M 34 2 h 2 v 2 h -2 Z M 36 2 h 2 v 2 h -2 Z M 38 2 h 2 v 2 h -2 Z M 40 2 h 2 v 2 h -2 Z M 22 4 h 2 v 2 h -2 Z M 24 4 h 2 v 2 h -2 Z M 28 4 h 2 v 2 h -2 Z M 30 4 h 2 v 2 h -2 Z M 32 4 h 2 v 2 h -2 Z M 34 4 h 2 v 2 h -2 Z M 22 6 h 2 v 2 h -2 Z M 24 6 h 2 v 2 h -2 Z M 38 6 h 2 v 2 h -2 Z M 40 6 h 2 v 2 h -2 Z M 22 8 h 2 v 2 h -2 Z M 24 8 h 2 v 2 h -2 Z M 26 8 h 2 v 2 h -2 Z M 28 8 h 2 v 2 h -2 Z M 30 8 h 2 v 2 h -2 Z M 32 8 h 2 v 2 h -2 Z M 34 8 h 2 v 2 h -2 Z M 36 8 h 2 v 2 h -2 Z M 22 10 h 2 v 2 h -2 Z M 24 10 h 2 v 2 h -2 Z M 26 10 h 2 v 2 h -2 Z M 28 10 h 2 v 2 h -2 Z M 2 12 h 2 v 2 h -2 Z M 22 12 h 2 v 2 h -2 Z M 24 12 h 2 v 2 h -2 Z M 26 12 h 2 v 2 h -2 Z M 28 12 h 2 v 2 h -2 Z M 30 12 h 2 v 2 h -2 Z M 32 12 h 2 v 2 h -2 Z M 2 14 h 2 v 2 h -2 Z M 4 14 h 2 v 2 h -2 Z M 20 14 h 2 v 2 h -2 Z M 22 14 h 2 v 2 h -2 Z M 24 14 h 2 v 2 h -2 Z M 26 14 h 2 v 2 h -2 Z M 28 14 h 2 v 2 h -2 Z M 2 16 h 2 v 2 h -2 Z M 4 16 h 2 v 2 h -2 Z M 6 16 h 2 v 2 h -2 Z M 18 16 h 2 v 2 h -2 Z M 20 16 h 2 v 2 h -2 Z M 22 16 h 2 v 2 h -2 Z M 24 16 h 2 v 2 h -2 Z M 26 16 h 2 v 2 h -2 Z M 28 16 h 2 v 2 h -2 Z M 30 16 h 2 v 2 h -2 Z M 32 16 h 2 v 2 h -2 Z M 34 16 h 2 v 2 h -2 Z M 2 18 h 2 v 2 h -2 Z M 4 18 h 2 v 2 h -2 Z M 6 18 h 2 v 2 h -2 Z M 8 18 h 2 v 2 h -2 Z M 16 18 h 2 v 2 h -2 Z M 18 18 h 2 v 2 h -2 Z M 20 18 h 2 v 2 h -2 Z M 22 18 h 2 v 2 h -2 Z M 24 18 h 2 v 2 h -2 Z M 26 18 h 2 v 2 h -2 Z M 28 18 h 2 v 2 h -2 Z M 30 18 h 2 v 2 h -2 Z M 32 18 h 2 v 2 h -2 Z M 34 18 h 2 v 2 h -2 Z M 2 20 h 2 v 2 h -2 Z M 4 20 h 2 v 2 h -2 Z M 6 20 h 2 v 2 h -2 Z M 8 20 h 2 v 2 h -2 Z M 10 20 h 2 v 2 h -2 Z M 14 20 h 2 v 2 h -2 Z M 16 20 h 2 v 2 h -2 Z M 18 20 h 2 v 2 h -2 Z M 20 20 h 2 v 2 h -2 Z M 22 20 h 2 v 2 h -2 Z M 24 20 h 2 v 2 h -2 Z M 26 20 h 2 v 2 h -2 Z M 28 20 h 2 v 2 h -2 Z M 30 20 h 2 v 2 h -2 Z M 32 20 h 2 v 2 h -2 Z M 34 20 h 2 v 2 h -2 Z M 2 22 h 2 v 2 h -2 Z M 4 22 h 2 v 2 h -2 Z M 6 22 h 2 v 2 h -2 Z M 8 22 h 2 v 2 h -2 Z M 10 22 h 2 v 2 h -2 Z M 12 22 h 2 v 2 h -2 Z M 14 22 h 2 v 2 h -2 Z M 16 22 h 2 v 2 h -2 Z M 18 22 h 2 v 2 h -2 Z M 20 22 h 2 v 2 h -2 Z M 22 22 h 2 v 2 h -2 Z M 24 22 h 2 v 2 h -2 Z M 26 22 h 2 v 2 h -2 Z M 28 22 h 2 v 2 h -2 Z M 30 22 h 2 v 2 h -2 Z M 32 22 h 2 v 2 h -2 Z M 4 24 h 2 v 2 h -2 Z M 6 24 h 2 v 2 h -2 Z M 8 24 h 2 v 2 h -2 Z M 10 24 h 2 v 2 h -2 Z M 12 24 h 2 v 2 h -2 Z M 14 24 h 2 v 2 h -2 Z M 16 24 h 2 v 2 h -2 Z M 18 24 h 2 v 2 h -2 Z M 20 24 h 2 v 2 h -2 Z M 22 24 h 2 v 2 h -2 Z M 24 24 h 2 v 2 h -2 Z M 26 24 h 2 v 2 h -2 Z M 28 24 h 2 v 2 h -2 Z M 30 24 h 2 v 2 h -2 Z M 6 26 h 2 v 2 h -2 Z M 8 26 h 2 v 2 h -2 Z M 10 26 h 2 v 2 h -2 Z M 12 26 h 2 v 2 h -2 Z M 14 26 h 2 v 2 h -2 Z M 16 26 h 2 v 2 h -2 Z M 18 26 h 2 v 2 h -2 Z M 20 26 h 2 v 2 h -2 Z M 22 26 h 2 v 2 h -2 Z M 24 26 h 2 v 2 h -2 Z M 26 26 h 2 v 2 h -2 Z M 28 26 h 2 v 2 h -2 Z M 8 28 h 2 v 2 h -2 Z M 10 28 h 2 v 2 h -2 Z M 12 28 h 2 v 2 h -2 Z M 14 28 h 2 v 2 h -2 Z M 16 28 h 2 v 2 h -2 Z M 18 28 h 2 v 2 h -2 Z M 20 28 h 2 v 2 h -2 Z M 22 28 h 2 v 2 h -2 Z M 24 28 h 2 v 2 h -2 Z M 26 28 h 2 v 2 h -2 Z M 10 30 h 2 v 2 h -2 Z M 12 30 h 2 v 2 h -2 Z M 14 30 h 2 v 2 h -2 Z M 16 30 h 2 v 2 h -2 Z M 18 30 h 2 v 2 h -2 Z M 20 30 h 2 v 2 h -2 Z M 22 30 h 2 v 2 h -2 Z M 24 30 h 2 v 2 h -2 Z M 12 32 h 2 v 2 h -2 Z M 14 32 h 2 v 2 h -2 Z M 16 32 h 2 v 2 h -2 Z M 18 32 h 2 v 2 h -2 Z M 20 32 h 2 v 2 h -2 Z M 22 32 h 2 v 2 h -2 Z M 14 34 h 2 v 2 h -2 Z M 16 34 h 2 v 2 h -2 Z M 20 34 h 2 v 2 h -2 Z M 22 34 h 2 v 2 h -2 Z M 20 36 h 2 v 2 h -2 Z M 22 36 h 2 v 2 h -2 Z M 20 38 h 2 v 2 h -2 Z M 22 38 h 2 v 2 h -2 Z" />
+        <path class="dino-color dino-jump" d="M 24 0 h 2 v 2 h -2 Z M 26 0 h 2 v 2 h -2 Z M 28 0 h 2 v 2 h -2 Z M 30 0 h 2 v 2 h -2 Z M 32 0 h 2 v 2 h -2 Z M 34 0 h 2 v 2 h -2 Z M 36 0 h 2 v 2 h -2 Z M 38 0 h 2 v 2 h -2 Z M 22 2 h 2 v 2 h -2 Z M 24 2 h 2 v 2 h -2 Z M 26 2 h 2 v 2 h -2 Z M 28 2 h 2 v 2 h -2 Z M 30 2 h 2 v 2 h -2 Z M 32 2 h 2 v 2 h -2 Z M 34 2 h 2 v 2 h -2 Z M 36 2 h 2 v 2 h -2 Z M 38 2 h 2 v 2 h -2 Z M 40 2 h 2 v 2 h -2 Z M 22 4 h 2 v 2 h -2 Z M 24 4 h 2 v 2 h -2 Z M 28 4 h 2 v 2 h -2 Z M 30 4 h 2 v 2 h -2 Z M 32 4 h 2 v 2 h -2 Z M 34 4 h 2 v 2 h -2 Z M 22 6 h 2 v 2 h -2 Z M 24 6 h 2 v 2 h -2 Z M 38 6 h 2 v 2 h -2 Z M 40 6 h 2 v 2 h -2 Z M 22 8 h 2 v 2 h -2 Z M 24 8 h 2 v 2 h -2 Z M 26 8 h 2 v 2 h -2 Z M 28 8 h 2 v 2 h -2 Z M 30 8 h 2 v 2 h -2 Z M 32 8 h 2 v 2 h -2 Z M 34 8 h 2 v 2 h -2 Z M 36 8 h 2 v 2 h -2 Z M 22 10 h 2 v 2 h -2 Z M 24 10 h 2 v 2 h -2 Z M 26 10 h 2 v 2 h -2 Z M 28 10 h 2 v 2 h -2 Z M 2 12 h 2 v 2 h -2 Z M 22 12 h 2 v 2 h -2 Z M 24 12 h 2 v 2 h -2 Z M 26 12 h 2 v 2 h -2 Z M 28 12 h 2 v 2 h -2 Z M 30 12 h 2 v 2 h -2 Z M 32 12 h 2 v 2 h -2 Z M 2 14 h 2 v 2 h -2 Z M 4 14 h 2 v 2 h -2 Z M 20 14 h 2 v 2 h -2 Z M 22 14 h 2 v 2 h -2 Z M 24 14 h 2 v 2 h -2 Z M 26 14 h 2 v 2 h -2 Z M 28 14 h 2 v 2 h -2 Z M 2 16 h 2 v 2 h -2 Z M 4 16 h 2 v 2 h -2 Z M 6 16 h 2 v 2 h -2 Z M 18 16 h 2 v 2 h -2 Z M 20 16 h 2 v 2 h -2 Z M 22 16 h 2 v 2 h -2 Z M 24 16 h 2 v 2 h -2 Z M 26 16 h 2 v 2 h -2 Z M 28 16 h 2 v 2 h -2 Z M 30 16 h 2 v 2 h -2 Z M 32 16 h 2 v 2 h -2 Z M 34 16 h 2 v 2 h -2 Z M 2 18 h 2 v 2 h -2 Z M 4 18 h 2 v 2 h -2 Z M 6 18 h 2 v 2 h -2 Z M 8 18 h 2 v 2 h -2 Z M 16 18 h 2 v 2 h -2 Z M 18 18 h 2 v 2 h -2 Z M 20 18 h 2 v 2 h -2 Z M 22 18 h 2 v 2 h -2 Z M 24 18 h 2 v 2 h -2 Z M 26 18 h 2 v 2 h -2 Z M 28 18 h 2 v 2 h -2 Z M 30 18 h 2 v 2 h -2 Z M 32 18 h 2 v 2 h -2 Z M 34 18 h 2 v 2 h -2 Z M 2 20 h 2 v 2 h -2 Z M 4 20 h 2 v 2 h -2 Z M 6 20 h 2 v 2 h -2 Z M 8 20 h 2 v 2 h -2 Z M 10 20 h 2 v 2 h -2 Z M 14 20 h 2 v 2 h -2 Z M 16 20 h 2 v 2 h -2 Z M 18 20 h 2 v 2 h -2 Z M 20 20 h 2 v 2 h -2 Z M 22 20 h 2 v 2 h -2 Z M 24 20 h 2 v 2 h -2 Z M 26 20 h 2 v 2 h -2 Z M 28 20 h 2 v 2 h -2 Z M 30 20 h 2 v 2 h -2 Z M 32 20 h 2 v 2 h -2 Z M 34 20 h 2 v 2 h -2 Z M 2 22 h 2 v 2 h -2 Z M 4 22 h 2 v 2 h -2 Z M 6 22 h 2 v 2 h -2 Z M 8 22 h 2 v 2 h -2 Z M 10 22 h 2 v 2 h -2 Z M 12 22 h 2 v 2 h -2 Z M 14 22 h 2 v 2 h -2 Z M 16 22 h 2 v 2 h -2 Z M 18 22 h 2 v 2 h -2 Z M 20 22 h 2 v 2 h -2 Z M 22 22 h 2 v 2 h -2 Z M 24 22 h 2 v 2 h -2 Z M 26 22 h 2 v 2 h -2 Z M 28 22 h 2 v 2 h -2 Z M 30 22 h 2 v 2 h -2 Z M 32 22 h 2 v 2 h -2 Z M 4 24 h 2 v 2 h -2 Z M 6 24 h 2 v 2 h -2 Z M 8 24 h 2 v 2 h -2 Z M 10 24 h 2 v 2 h -2 Z M 12 24 h 2 v 2 h -2 Z M 14 24 h 2 v 2 h -2 Z M 16 24 h 2 v 2 h -2 Z M 18 24 h 2 v 2 h -2 Z M 20 24 h 2 v 2 h -2 Z M 22 24 h 2 v 2 h -2 Z M 24 24 h 2 v 2 h -2 Z M 26 24 h 2 v 2 h -2 Z M 28 24 h 2 v 2 h -2 Z M 30 24 h 2 v 2 h -2 Z M 6 26 h 2 v 2 h -2 Z M 8 26 h 2 v 2 h -2 Z M 10 26 h 2 v 2 h -2 Z M 12 26 h 2 v 2 h -2 Z M 14 26 h 2 v 2 h -2 Z M 16 26 h 2 v 2 h -2 Z M 18 26 h 2 v 2 h -2 Z M 20 26 h 2 v 2 h -2 Z M 22 26 h 2 v 2 h -2 Z M 24 26 h 2 v 2 h -2 Z M 26 26 h 2 v 2 h -2 Z M 28 26 h 2 v 2 h -2 Z M 8 28 h 2 v 2 h -2 Z M 10 28 h 2 v 2 h -2 Z M 12 28 h 2 v 2 h -2 Z M 14 28 h 2 v 2 h -2 Z M 16 28 h 2 v 2 h -2 Z M 18 28 h 2 v 2 h -2 Z M 20 28 h 2 v 2 h -2 Z M 22 28 h 2 v 2 h -2 Z M 24 28 h 2 v 2 h -2 Z M 26 28 h 2 v 2 h -2 Z M 10 30 h 2 v 2 h -2 Z M 12 30 h 2 v 2 h -2 Z M 14 30 h 2 v 2 h -2 Z M 16 30 h 2 v 2 h -2 Z M 18 30 h 2 v 2 h -2 Z M 20 30 h 2 v 2 h -2 Z M 22 30 h 2 v 2 h -2 Z M 24 30 h 2 v 2 h -2 Z M 12 32 h 2 v 2 h -2 Z M 14 32 h 2 v 2 h -2 Z M 16 32 h 2 v 2 h -2 Z M 18 32 h 2 v 2 h -2 Z M 20 32 h 2 v 2 h -2 Z M 22 32 h 2 v 2 h -2 Z M 14 34 h 2 v 2 h -2 Z M 16 34 h 2 v 2 h -2 Z M 20 34 h 2 v 2 h -2 Z M 22 34 h 2 v 2 h -2 Z M 14 36 h 2 v 2 h -2 Z M 16 36 h 2 v 2 h -2 Z M 20 36 h 2 v 2 h -2 Z M 22 36 h 2 v 2 h -2 Z M 14 38 h 2 v 2 h -2 Z M 22 38 h 2 v 2 h -2 Z" />
+      </g>
+    </g>
+  </g>
+</svg>

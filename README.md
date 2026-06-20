@@ -3,6 +3,10 @@
 </p>
 
 <p align="center">
+  <img src="./dino-trungvi.svg" alt="Pixel Dino Trung Vi Animation" width="100%">
+</p>
+
+<p align="center">
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&duration=3000&pause=1000&color=D97706&center=true&vCenter=true&width=500&lines=AI+Engineer;Deep+Learning;LLMs;Building+intelligent+systems" alt="Typing SVG" />
   </a>
