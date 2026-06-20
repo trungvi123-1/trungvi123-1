@@ -2,9 +2,7 @@
   <img src="./banner.svg" alt="trungvi" width="100%">
 </p>
 
-<p align="center">
-  <img src="./dino-trungvi.svg" alt="Pixel Cyber Dino Trung Vi Animation" width="100%">
-</p>
+
 
 <p align="center">
   <a href="https://git.io/typing-svg">
