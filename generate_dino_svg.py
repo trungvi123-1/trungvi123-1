@@ -1,6 +1,7 @@
 import os
 
-# Define the Dino Sprites (pixels: '#' is filled, '.' is transparent/eye, ' ' is transparent)
+# Define the Dino Sprites
+# '#' is body (Cyan), '*' is spikes (Magenta), '.' is eye (Red), ' ' is transparent
 DINO_SPRITES = {
     'run1': [
         "            ########",
@@ -9,11 +10,11 @@ DINO_SPRITES = {
         "           ##########",
         "           ######",
         "           ####",
-        " #         ######",
-        " ##       #####",
-        " ###     #########",
-        " ####   ##########",
-        " ##### ###########",
+        " *         ######",
+        " **       #####",
+        " ***     #########",
+        " ****   ##########",
+        " ***** ###########",
         " ################",
         "  ##############",
         "   ############",
@@ -31,11 +32,11 @@ DINO_SPRITES = {
         "           ##      ##",
         "           ########",
         "           ####",
-        " #         ######",
-        " ##       #####",
-        " ###     #########",
-        " ####   ##########",
-        " ##### ###########",
+        " *         ######",
+        " **       #####",
+        " ***     #########",
+        " ****   ##########",
+        " ***** ###########",
         " ################",
         "  ##############",
         "   ############",
@@ -53,11 +54,11 @@ DINO_SPRITES = {
         "           ##      ##",
         "           ########",
         "           ####",
-        " #         ######",
-        " ##       #####",
-        " ###     #########",
-        " ####   ##########",
-        " ##### ###########",
+        " *         ######",
+        " **       #####",
+        " ***     #########",
+        " ****   ##########",
+        " ***** ###########",
         " ################",
         "  ##############",
         "   ############",
@@ -70,13 +71,13 @@ DINO_SPRITES = {
     ]
 }
 
-# 7x5 Retro font for TRUNGVI
+# 7x5 Stencil Tech font for TRUNGVI
 LETTER_SPRITES = {
     'T': [
         "#####",
         "  #  ",
         "  #  ",
-        "  #  ",
+        "     ",  # Stencil gap
         "  #  ",
         "  #  ",
         "  #  "
@@ -86,15 +87,15 @@ LETTER_SPRITES = {
         "#   #",
         "#   #",
         "#### ",
+        "     ",  # Stencil gap
         "#  # ",
-        "#   #",
         "#   #"
     ],
     'U': [
         "#   #",
         "#   #",
         "#   #",
-        "#   #",
+        "     ",  # Stencil gap
         "#   #",
         "#   #",
         " ### "
@@ -103,8 +104,8 @@ LETTER_SPRITES = {
         "#   #",
         "##  #",
         "# # #",
+        "     ",  # Stencil gap
         "#  ##",
-        "#   #",
         "#   #",
         "#   #"
     ],
@@ -112,8 +113,8 @@ LETTER_SPRITES = {
         " ### ",
         "#   #",
         "#    ",
+        "     ",  # Stencil gap
         "# ###",
-        "#   #",
         "#   #",
         " ### "
     ],
@@ -121,7 +122,7 @@ LETTER_SPRITES = {
         "#   #",
         "#   #",
         "#   #",
-        "#   #",
+        "     ",  # Stencil gap
         "#   #",
         " # # ",
         "  #  "
@@ -130,23 +131,32 @@ LETTER_SPRITES = {
         "#####",
         "  #  ",
         "  #  ",
-        "  #  ",
+        "     ",  # Stencil gap
         "  #  ",
         "  #  ",
         "#####"
     ]
 }
 
-# Helper to convert sprite to SVG path
-def sprite_to_path_d(sprite, pixel_size=2):
-    path_parts = []
+# Helper to convert sprite to multiple paths based on character types
+def sprite_to_paths(sprite, pixel_size=2):
+    paths = {
+        'body': [],
+        'spikes': [],
+        'eye': []
+    }
     for r_idx, row in enumerate(sprite):
         for c_idx, char in enumerate(row):
+            x = c_idx * pixel_size
+            y = r_idx * pixel_size
+            path_part = f"M {x} {y} h {pixel_size} v {pixel_size} h {-pixel_size} Z"
             if char == '#':
-                x = c_idx * pixel_size
-                y = r_idx * pixel_size
-                path_parts.append(f"M {x} {y} h {pixel_size} v {pixel_size} h {-pixel_size} Z")
-    return " ".join(path_parts)
+                paths['body'].append(path_part)
+            elif char == '*':
+                paths['spikes'].append(path_part)
+            elif char == '.':
+                paths['eye'].append(path_part)
+    return {k: " ".join(v) for k, v in paths.items()}
 
 def main():
     # Output file
@@ -156,40 +166,38 @@ def main():
     dino_pixel_size = 2 # 20 rows * 2 = 40px height, 20 cols * 2 = 40px width
     letter_pixel_size = 4 # 7 rows * 4 = 28px height, 5 cols * 4 = 20px width
     
-    # Convert sprites to path data
-    dino_run1_d = sprite_to_path_d(DINO_SPRITES['run1'], dino_pixel_size)
-    dino_run2_d = sprite_to_path_d(DINO_SPRITES['run2'], dino_pixel_size)
-    dino_jump_d = sprite_to_path_d(DINO_SPRITES['jump'], dino_pixel_size)
+    # Convert sprites to path data dictionaries
+    dino_run1 = sprite_to_paths(DINO_SPRITES['run1'], dino_pixel_size)
+    dino_run2 = sprite_to_paths(DINO_SPRITES['run2'], dino_pixel_size)
+    dino_jump = sprite_to_paths(DINO_SPRITES['jump'], dino_pixel_size)
     
     letters_d = {}
     for letter, sprite in LETTER_SPRITES.items():
-        letters_d[letter] = sprite_to_path_d(sprite, letter_pixel_size)
+        # Letters only have '#' and ' ' (transparent)
+        paths_dict = sprite_to_paths(sprite, letter_pixel_size)
+        letters_d[letter] = paths_dict['body']
         
     # Letter Positions
-    # Center of SVG is 400.
     letters = ['T', 'R', 'U', 'N', 'G', 'V', 'I']
     letter_x_coords = [200, 265, 330, 395, 460, 525, 590]
     
-    # Ground details
-    # We will generate a retro ground with some cracks/bumps
+    # Ground details - Glowing digital axis
     ground_y = 150
     ground_path_d = f"M 0 {ground_y} H 800"
     
-    # Add some retro pixel ground decorations (like dots or small horizontal lines)
+    # Sci-fi ground tick marks
     ground_decorations = [
-        "M 50 155 h 6 M 52 157 h 2",
-        "M 180 154 h 4",
-        "M 310 156 h 8 M 312 158 h 3",
-        "M 450 155 h 5",
-        "M 620 154 h 3 M 622 156 h 5",
-        "M 750 157 h 4"
+        "M 40 150 v 5 M 42 153 h 4",
+        "M 120 150 v 3",
+        "M 220 150 v 6 M 222 154 h 6",
+        "M 340 150 v 4",
+        "M 480 150 v 5 M 482 153 h 4",
+        "M 600 150 v 3",
+        "M 720 150 v 6 M 722 154 h 6"
     ]
     ground_decor_d = " ".join(ground_decorations)
 
-    # Jump Timing and Keyframes
-    # Loop duration: 12 seconds
-    # Speed: 920px in 12s => 76.67px/s
-    # Dino X: -60 to 860
+    # Jump Timing and Keyframes (Loop duration: 12 seconds)
     jumps = [
         (2.76, 3.26),  # T (peak at 3.01)
         (3.61, 4.11),  # R (peak at 3.86)
@@ -236,7 +244,7 @@ def main():
     run1_css = "\n".join(keyframes_run1)
     run2_css = "\n".join(keyframes_run2)
     jump_css = "\n".join(keyframes_jump)
-
+ 
     # Let's generate the Letter bounce CSS keyframes
     letter_animations_css = []
     for idx, letter in enumerate(letters):
@@ -251,8 +259,8 @@ def main():
     @keyframes bounce-{letter.lower()} {{
       0% {{ transform: scale(1); }}
       {start_pct:.2f}% {{ transform: scale(1); }}
-      {peak_pct:.2f}% {{ transform: scale(1.3, 0.7); }} /* Squished as Dino jumps over */
-      {mid_pct:.2f}% {{ transform: scale(0.8, 1.2); }}  /* Rebound stretch */
+      {peak_pct:.2f}% {{ transform: scale(1.2, 0.8); }} /* Squished as Dino jumps over */
+      {mid_pct:.2f}% {{ transform: scale(0.85, 1.15); }}  /* Rebound stretch */
       {end_pct:.2f}% {{ transform: scale(1); }}
       100% {{ transform: scale(1); }}
     }}
@@ -270,54 +278,52 @@ def main():
     /* Theme color adaptation */
     :root {{
       --bg-color: transparent;
-      --dino-color: #39ff14;
-      --ground-color: #30363d;
-      --decor-color: #21262d;
+      --dino-color: #00f0ff;
+      --ground-color: rgba(0, 240, 255, 0.25);
+      --decor-color: rgba(255, 0, 127, 0.2);
       
-      /* Rainbow letters - Dark Theme */
-      --color-t: #ff7b72;
-      --color-r: #f0883e;
-      --color-u: #ffeb3b;
-      --color-n: #39ff14;
-      --color-g: #58a6ff;
-      --color-v: #bc8cff;
-      --color-i: #ff79c6;
+      /* Neon Cyber Colors */
+      --color-t: #00f0ff;
+      --color-r: #ff007f;
+      --color-u: #00f0ff;
+      --color-n: #ff007f;
+      --color-g: #00f0ff;
+      --color-v: #ff007f;
+      --color-i: #00f0ff;
     }}
     
     @media (prefers-color-scheme: light) {{
       :root {{
-        --dino-color: #24292f;
-        --ground-color: #d0d7de;
-        --decor-color: #afb8c1;
+        --dino-color: #080B10;
+        --ground-color: rgba(0, 136, 204, 0.3);
+        --decor-color: rgba(204, 0, 102, 0.25);
         
-        /* Rainbow letters - Light Theme */
-        --color-t: #cf222e;
-        --color-r: #bc4c00;
-        --color-u: #8250df;
-        --color-n: #1a7f37;
-        --color-g: #0969da;
-        --color-v: #8250df;
-        --color-i: #bf3989;
+        --color-t: #0088cc;
+        --color-r: #cc0066;
+        --color-u: #0088cc;
+        --color-n: #cc0066;
+        --color-g: #0088cc;
+        --color-v: #cc0066;
+        --color-i: #0088cc;
       }}
     }}
 
     .dino-color {{ fill: var(--dino-color); }}
-    .ground-color {{ stroke: var(--ground-color); stroke-width: 2; fill: none; }}
-    .decor-color {{ fill: var(--decor-color); }}
+    .ground-color {{ stroke: var(--ground-color); stroke-width: 1.5; fill: none; }}
+    .decor-color {{ fill: none; stroke: var(--decor-color); stroke-width: 1; }}
+    
+    /* Neon Glows */
+    .glow-cyan {{ filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.6)); }}
+    .glow-magenta {{ filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.6)); }}
     
     /* Letter colors */
-    .color-t {{ fill: var(--color-t); }}
-    .color-r {{ fill: var(--color-r); }}
-    .color-u {{ fill: var(--color-u); }}
-    .color-n {{ fill: var(--color-n); }}
-    .color-g {{ fill: var(--color-g); }}
-    .color-v {{ fill: var(--color-v); }}
-    .color-i {{ fill: var(--color-i); }}
-
-    /* Base layouts */
-    .letters-group {{
-      display: flex;
-    }}
+    .color-t {{ fill: var(--color-t); filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.5)); }}
+    .color-r {{ fill: var(--color-r); filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }}
+    .color-u {{ fill: var(--color-u); filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.5)); }}
+    .color-n {{ fill: var(--color-n); filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }}
+    .color-g {{ fill: var(--color-g); filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.5)); }}
+    .color-v {{ fill: var(--color-v); filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }}
+    .color-i {{ fill: var(--color-i); filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.5)); }}
 
     /* Dino movement path */
     .dino-container {{
@@ -379,15 +385,14 @@ def main():
 {letter_animations_block}
   </style>
 
-  <!-- Background (Optional / Transparent by default) -->
+  <!-- Background -->
   <rect width="100%" height="100%" fill="var(--bg-color)" />
 
-  <!-- Ground -->
+  <!-- Ground Axis -->
   <path class="ground-color" d="{ground_path_d}" />
   <path class="decor-color" d="{ground_decor_d}" />
 
   <!-- Letters "TRUNGVI" -->
-  <!-- Positioned at y = 122 (150 ground - 28 height) -->
   <g transform="translate({letter_x_coords[0]}, 122)">
     <g class="letter-t">
       <path class="color-t" d="{letters_d['T']}" />
@@ -424,14 +429,25 @@ def main():
     </g>
   </g>
 
-  <!-- Animated Dino -->
+  <!-- Animated Cyber-Dino -->
   <!-- Base y offset puts Dino on the ground (150 ground - 40 dino height) -->
   <g class="dino-container">
     <g transform="translate(0, 110)">
       <g class="dino-y">
-        <path class="dino-color dino-run1" d="{dino_run1_d}" />
-        <path class="dino-color dino-run2" d="{dino_run2_d}" />
-        <path class="dino-color dino-jump" d="{dino_jump_d}" />
+        <!-- Body (Cyan) -->
+        <path class="dino-color dino-run1 glow-cyan" d="{dino_run1['body']}" />
+        <path class="dino-color dino-run2 glow-cyan" d="{dino_run2['body']}" />
+        <path class="dino-color dino-jump glow-cyan" d="{dino_jump['body']}" />
+        
+        <!-- Spikes (Neon Pink) -->
+        <path class="dino-run1 glow-magenta" d="{dino_run1['spikes']}" fill="#ff007f" />
+        <path class="dino-run2 glow-magenta" d="{dino_run2['spikes']}" fill="#ff007f" />
+        <path class="dino-jump glow-magenta" d="{dino_jump['spikes']}" fill="#ff007f" />
+        
+        <!-- Eye (Neon Red) -->
+        <path class="dino-run1" d="{dino_run1['eye']}" fill="#ff0033" filter="drop-shadow(0 0 2px #ff0033)" />
+        <path class="dino-run2" d="{dino_run2['eye']}" fill="#ff0033" filter="drop-shadow(0 0 2px #ff0033)" />
+        <path class="dino-jump" d="{dino_jump['eye']}" fill="#ff0033" filter="drop-shadow(0 0 2px #ff0033)" />
       </g>
     </g>
   </g>

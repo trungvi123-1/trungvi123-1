@@ -3,54 +3,52 @@
     /* Theme color adaptation */
     :root {
       --bg-color: transparent;
-      --dino-color: #39ff14;
-      --ground-color: #30363d;
-      --decor-color: #21262d;
+      --dino-color: #00f0ff;
+      --ground-color: rgba(0, 240, 255, 0.25);
+      --decor-color: rgba(255, 0, 127, 0.2);
       
-      /* Rainbow letters - Dark Theme */
-      --color-t: #ff7b72;
-      --color-r: #f0883e;
-      --color-u: #ffeb3b;
-      --color-n: #39ff14;
-      --color-g: #58a6ff;
-      --color-v: #bc8cff;
-      --color-i: #ff79c6;
+      /* Neon Cyber Colors */
+      --color-t: #00f0ff;
+      --color-r: #ff007f;
+      --color-u: #00f0ff;
+      --color-n: #ff007f;
+      --color-g: #00f0ff;
+      --color-v: #ff007f;
+      --color-i: #00f0ff;
     }
     
     @media (prefers-color-scheme: light) {
       :root {
-        --dino-color: #24292f;
-        --ground-color: #d0d7de;
-        --decor-color: #afb8c1;
+        --dino-color: #080B10;
+        --ground-color: rgba(0, 136, 204, 0.3);
+        --decor-color: rgba(204, 0, 102, 0.25);
         
-        /* Rainbow letters - Light Theme */
-        --color-t: #cf222e;
-        --color-r: #bc4c00;
-        --color-u: #8250df;
-        --color-n: #1a7f37;
-        --color-g: #0969da;
-        --color-v: #8250df;
-        --color-i: #bf3989;
+        --color-t: #0088cc;
+        --color-r: #cc0066;
+        --color-u: #0088cc;
+        --color-n: #cc0066;
+        --color-g: #0088cc;
+        --color-v: #cc0066;
+        --color-i: #0088cc;
       }
     }
 
     .dino-color { fill: var(--dino-color); }
-    .ground-color { stroke: var(--ground-color); stroke-width: 2; fill: none; }
-    .decor-color { fill: var(--decor-color); }
+    .ground-color { stroke: var(--ground-color); stroke-width: 1.5; fill: none; }
+    .decor-color { fill: none; stroke: var(--decor-color); stroke-width: 1; }
+    
+    /* Neon Glows */
+    .glow-cyan { filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.6)); }
+    .glow-magenta { filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.6)); }
     
     /* Letter colors */
-    .color-t { fill: var(--color-t); }
-    .color-r { fill: var(--color-r); }
-    .color-u { fill: var(--color-u); }
-    .color-n { fill: var(--color-n); }
-    .color-g { fill: var(--color-g); }
-    .color-v { fill: var(--color-v); }
-    .color-i { fill: var(--color-i); }
-
-    /* Base layouts */
-    .letters-group {
-      display: flex;
-    }
+    .color-t { fill: var(--color-t); filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.5)); }
+    .color-r { fill: var(--color-r); filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }
+    .color-u { fill: var(--color-u); filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.5)); }
+    .color-n { fill: var(--color-n); filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }
+    .color-g { fill: var(--color-g); filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.5)); }
+    .color-v { fill: var(--color-v); filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }
+    .color-i { fill: var(--color-i); filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.5)); }
 
     /* Dino movement path */
     .dino-container {
@@ -833,8 +831,8 @@
     @keyframes bounce-t {
       0% { transform: scale(1); }
       22.17% { transform: scale(1); }
-      25.08% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
-      27.17% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      25.08% { transform: scale(1.2, 0.8); } /* Squished as Dino jumps over */
+      27.17% { transform: scale(0.85, 1.15); }  /* Rebound stretch */
       28.83% { transform: scale(1); }
       100% { transform: scale(1); }
     }
@@ -847,8 +845,8 @@
     @keyframes bounce-r {
       0% { transform: scale(1); }
       29.25% { transform: scale(1); }
-      32.17% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
-      34.25% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      32.17% { transform: scale(1.2, 0.8); } /* Squished as Dino jumps over */
+      34.25% { transform: scale(0.85, 1.15); }  /* Rebound stretch */
       35.92% { transform: scale(1); }
       100% { transform: scale(1); }
     }
@@ -861,8 +859,8 @@
     @keyframes bounce-u {
       0% { transform: scale(1); }
       36.33% { transform: scale(1); }
-      39.25% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
-      41.33% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      39.25% { transform: scale(1.2, 0.8); } /* Squished as Dino jumps over */
+      41.33% { transform: scale(0.85, 1.15); }  /* Rebound stretch */
       43.00% { transform: scale(1); }
       100% { transform: scale(1); }
     }
@@ -875,8 +873,8 @@
     @keyframes bounce-n {
       0% { transform: scale(1); }
       43.42% { transform: scale(1); }
-      46.33% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
-      48.42% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      46.33% { transform: scale(1.2, 0.8); } /* Squished as Dino jumps over */
+      48.42% { transform: scale(0.85, 1.15); }  /* Rebound stretch */
       50.08% { transform: scale(1); }
       100% { transform: scale(1); }
     }
@@ -889,8 +887,8 @@
     @keyframes bounce-g {
       0% { transform: scale(1); }
       50.42% { transform: scale(1); }
-      53.33% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
-      55.42% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      53.33% { transform: scale(1.2, 0.8); } /* Squished as Dino jumps over */
+      55.42% { transform: scale(0.85, 1.15); }  /* Rebound stretch */
       57.08% { transform: scale(1); }
       100% { transform: scale(1); }
     }
@@ -903,8 +901,8 @@
     @keyframes bounce-v {
       0% { transform: scale(1); }
       57.50% { transform: scale(1); }
-      60.42% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
-      62.50% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      60.42% { transform: scale(1.2, 0.8); } /* Squished as Dino jumps over */
+      62.50% { transform: scale(0.85, 1.15); }  /* Rebound stretch */
       64.17% { transform: scale(1); }
       100% { transform: scale(1); }
     }
@@ -917,8 +915,8 @@
     @keyframes bounce-i {
       0% { transform: scale(1); }
       64.58% { transform: scale(1); }
-      67.50% { transform: scale(1.3, 0.7); } /* Squished as Dino jumps over */
-      69.58% { transform: scale(0.8, 1.2); }  /* Rebound stretch */
+      67.50% { transform: scale(1.2, 0.8); } /* Squished as Dino jumps over */
+      69.58% { transform: scale(0.85, 1.15); }  /* Rebound stretch */
       71.25% { transform: scale(1); }
       100% { transform: scale(1); }
     }
@@ -929,59 +927,69 @@
     }
   </style>
 
-  <!-- Background (Optional / Transparent by default) -->
+  <!-- Background -->
   <rect width="100%" height="100%" fill="var(--bg-color)" />
 
-  <!-- Ground -->
+  <!-- Ground Axis -->
   <path class="ground-color" d="M 0 150 H 800" />
-  <path class="decor-color" d="M 50 155 h 6 M 52 157 h 2 M 180 154 h 4 M 310 156 h 8 M 312 158 h 3 M 450 155 h 5 M 620 154 h 3 M 622 156 h 5 M 750 157 h 4" />
+  <path class="decor-color" d="M 40 150 v 5 M 42 153 h 4 M 120 150 v 3 M 220 150 v 6 M 222 154 h 6 M 340 150 v 4 M 480 150 v 5 M 482 153 h 4 M 600 150 v 3 M 720 150 v 6 M 722 154 h 6" />
 
   <!-- Letters "TRUNGVI" -->
-  <!-- Positioned at y = 122 (150 ground - 28 height) -->
   <g transform="translate(200, 122)">
     <g class="letter-t">
-      <path class="color-t" d="M 0 0 h 4 v 4 h -4 Z M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 8 4 h 4 v 4 h -4 Z M 8 8 h 4 v 4 h -4 Z M 8 12 h 4 v 4 h -4 Z M 8 16 h 4 v 4 h -4 Z M 8 20 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z" />
+      <path class="color-t" d="M 0 0 h 4 v 4 h -4 Z M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 8 4 h 4 v 4 h -4 Z M 8 8 h 4 v 4 h -4 Z M 8 16 h 4 v 4 h -4 Z M 8 20 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z" />
     </g>
   </g>
   <g transform="translate(265, 122)">
     <g class="letter-r">
-      <path class="color-r" d="M 0 0 h 4 v 4 h -4 Z M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 4 12 h 4 v 4 h -4 Z M 8 12 h 4 v 4 h -4 Z M 12 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 12 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 0 24 h 4 v 4 h -4 Z M 16 24 h 4 v 4 h -4 Z" />
+      <path class="color-r" d="M 0 0 h 4 v 4 h -4 Z M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 4 12 h 4 v 4 h -4 Z M 8 12 h 4 v 4 h -4 Z M 12 12 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 12 20 h 4 v 4 h -4 Z M 0 24 h 4 v 4 h -4 Z M 16 24 h 4 v 4 h -4 Z" />
     </g>
   </g>
   <g transform="translate(330, 122)">
     <g class="letter-u">
-      <path class="color-u" d="M 0 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 16 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 4 24 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z M 12 24 h 4 v 4 h -4 Z" />
+      <path class="color-u" d="M 0 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 4 24 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z M 12 24 h 4 v 4 h -4 Z" />
     </g>
   </g>
   <g transform="translate(395, 122)">
     <g class="letter-n">
-      <path class="color-n" d="M 0 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 4 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 8 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 12 12 h 4 v 4 h -4 Z M 16 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 0 24 h 4 v 4 h -4 Z M 16 24 h 4 v 4 h -4 Z" />
+      <path class="color-n" d="M 0 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 4 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 8 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 12 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 0 24 h 4 v 4 h -4 Z M 16 24 h 4 v 4 h -4 Z" />
     </g>
   </g>
   <g transform="translate(460, 122)">
     <g class="letter-g">
-      <path class="color-g" d="M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 8 12 h 4 v 4 h -4 Z M 12 12 h 4 v 4 h -4 Z M 16 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 4 24 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z M 12 24 h 4 v 4 h -4 Z" />
+      <path class="color-g" d="M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 8 16 h 4 v 4 h -4 Z M 12 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 0 20 h 4 v 4 h -4 Z M 16 20 h 4 v 4 h -4 Z M 4 24 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z M 12 24 h 4 v 4 h -4 Z" />
     </g>
   </g>
   <g transform="translate(525, 122)">
     <g class="letter-v">
-      <path class="color-v" d="M 0 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 12 h 4 v 4 h -4 Z M 16 12 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 4 20 h 4 v 4 h -4 Z M 12 20 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z" />
+      <path class="color-v" d="M 0 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 0 4 h 4 v 4 h -4 Z M 16 4 h 4 v 4 h -4 Z M 0 8 h 4 v 4 h -4 Z M 16 8 h 4 v 4 h -4 Z M 0 16 h 4 v 4 h -4 Z M 16 16 h 4 v 4 h -4 Z M 4 20 h 4 v 4 h -4 Z M 12 20 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z" />
     </g>
   </g>
   <g transform="translate(590, 122)">
     <g class="letter-i">
-      <path class="color-i" d="M 0 0 h 4 v 4 h -4 Z M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 8 4 h 4 v 4 h -4 Z M 8 8 h 4 v 4 h -4 Z M 8 12 h 4 v 4 h -4 Z M 8 16 h 4 v 4 h -4 Z M 8 20 h 4 v 4 h -4 Z M 0 24 h 4 v 4 h -4 Z M 4 24 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z M 12 24 h 4 v 4 h -4 Z M 16 24 h 4 v 4 h -4 Z" />
+      <path class="color-i" d="M 0 0 h 4 v 4 h -4 Z M 4 0 h 4 v 4 h -4 Z M 8 0 h 4 v 4 h -4 Z M 12 0 h 4 v 4 h -4 Z M 16 0 h 4 v 4 h -4 Z M 8 4 h 4 v 4 h -4 Z M 8 8 h 4 v 4 h -4 Z M 8 16 h 4 v 4 h -4 Z M 8 20 h 4 v 4 h -4 Z M 0 24 h 4 v 4 h -4 Z M 4 24 h 4 v 4 h -4 Z M 8 24 h 4 v 4 h -4 Z M 12 24 h 4 v 4 h -4 Z M 16 24 h 4 v 4 h -4 Z" />
     </g>
   </g>
 
-  <!-- Animated Dino -->
+  <!-- Animated Cyber-Dino -->
   <!-- Base y offset puts Dino on the ground (150 ground - 40 dino height) -->
   <g class="dino-container">
     <g transform="translate(0, 110)">
       <g class="dino-y">
-        <path class="dino-color dino-run1" d="M 24 0 h 2 v 2 h -2 Z M 26 0 h 2 v 2 h -2 Z M 28 0 h 2 v 2 h -2 Z M 30 0 h 2 v 2 h -2 Z M 32 0 h 2 v 2 h -2 Z M 34 0 h 2 v 2 h -2 Z M 36 0 h 2 v 2 h -2 Z M 38 0 h 2 v 2 h -2 Z M 22 2 h 2 v 2 h -2 Z M 24 2 h 2 v 2 h -2 Z M 26 2 h 2 v 2 h -2 Z M 28 2 h 2 v 2 h -2 Z M 30 2 h 2 v 2 h -2 Z M 32 2 h 2 v 2 h -2 Z M 34 2 h 2 v 2 h -2 Z M 36 2 h 2 v 2 h -2 Z M 38 2 h 2 v 2 h -2 Z M 40 2 h 2 v 2 h -2 Z M 22 4 h 2 v 2 h -2 Z M 24 4 h 2 v 2 h -2 Z M 28 4 h 2 v 2 h -2 Z M 30 4 h 2 v 2 h -2 Z M 32 4 h 2 v 2 h -2 Z M 34 4 h 2 v 2 h -2 Z M 36 4 h 2 v 2 h -2 Z M 38 4 h 2 v 2 h -2 Z M 40 4 h 2 v 2 h -2 Z M 22 6 h 2 v 2 h -2 Z M 24 6 h 2 v 2 h -2 Z M 26 6 h 2 v 2 h -2 Z M 28 6 h 2 v 2 h -2 Z M 30 6 h 2 v 2 h -2 Z M 32 6 h 2 v 2 h -2 Z M 34 6 h 2 v 2 h -2 Z M 36 6 h 2 v 2 h -2 Z M 38 6 h 2 v 2 h -2 Z M 40 6 h 2 v 2 h -2 Z M 22 8 h 2 v 2 h -2 Z M 24 8 h 2 v 2 h -2 Z M 26 8 h 2 v 2 h -2 Z M 28 8 h 2 v 2 h -2 Z M 30 8 h 2 v 2 h -2 Z M 32 8 h 2 v 2 h -2 Z M 22 10 h 2 v 2 h -2 Z M 24 10 h 2 v 2 h -2 Z M 26 10 h 2 v 2 h -2 Z M 28 10 h 2 v 2 h -2 Z M 2 12 h 2 v 2 h -2 Z M 22 12 h 2 v 2 h -2 Z M 24 12 h 2 v 2 h -2 Z M 26 12 h 2 v 2 h -2 Z M 28 12 h 2 v 2 h -2 Z M 30 12 h 2 v 2 h -2 Z M 32 12 h 2 v 2 h -2 Z M 2 14 h 2 v 2 h -2 Z M 4 14 h 2 v 2 h -2 Z M 20 14 h 2 v 2 h -2 Z M 22 14 h 2 v 2 h -2 Z M 24 14 h 2 v 2 h -2 Z M 26 14 h 2 v 2 h -2 Z M 28 14 h 2 v 2 h -2 Z M 2 16 h 2 v 2 h -2 Z M 4 16 h 2 v 2 h -2 Z M 6 16 h 2 v 2 h -2 Z M 18 16 h 2 v 2 h -2 Z M 20 16 h 2 v 2 h -2 Z M 22 16 h 2 v 2 h -2 Z M 24 16 h 2 v 2 h -2 Z M 26 16 h 2 v 2 h -2 Z M 28 16 h 2 v 2 h -2 Z M 30 16 h 2 v 2 h -2 Z M 32 16 h 2 v 2 h -2 Z M 34 16 h 2 v 2 h -2 Z M 2 18 h 2 v 2 h -2 Z M 4 18 h 2 v 2 h -2 Z M 6 18 h 2 v 2 h -2 Z M 8 18 h 2 v 2 h -2 Z M 16 18 h 2 v 2 h -2 Z M 18 18 h 2 v 2 h -2 Z M 20 18 h 2 v 2 h -2 Z M 22 18 h 2 v 2 h -2 Z M 24 18 h 2 v 2 h -2 Z M 26 18 h 2 v 2 h -2 Z M 28 18 h 2 v 2 h -2 Z M 30 18 h 2 v 2 h -2 Z M 32 18 h 2 v 2 h -2 Z M 34 18 h 2 v 2 h -2 Z M 2 20 h 2 v 2 h -2 Z M 4 20 h 2 v 2 h -2 Z M 6 20 h 2 v 2 h -2 Z M 8 20 h 2 v 2 h -2 Z M 10 20 h 2 v 2 h -2 Z M 14 20 h 2 v 2 h -2 Z M 16 20 h 2 v 2 h -2 Z M 18 20 h 2 v 2 h -2 Z M 20 20 h 2 v 2 h -2 Z M 22 20 h 2 v 2 h -2 Z M 24 20 h 2 v 2 h -2 Z M 26 20 h 2 v 2 h -2 Z M 28 20 h 2 v 2 h -2 Z M 30 20 h 2 v 2 h -2 Z M 32 20 h 2 v 2 h -2 Z M 34 20 h 2 v 2 h -2 Z M 2 22 h 2 v 2 h -2 Z M 4 22 h 2 v 2 h -2 Z M 6 22 h 2 v 2 h -2 Z M 8 22 h 2 v 2 h -2 Z M 10 22 h 2 v 2 h -2 Z M 12 22 h 2 v 2 h -2 Z M 14 22 h 2 v 2 h -2 Z M 16 22 h 2 v 2 h -2 Z M 18 22 h 2 v 2 h -2 Z M 20 22 h 2 v 2 h -2 Z M 22 22 h 2 v 2 h -2 Z M 24 22 h 2 v 2 h -2 Z M 26 22 h 2 v 2 h -2 Z M 28 22 h 2 v 2 h -2 Z M 30 22 h 2 v 2 h -2 Z M 32 22 h 2 v 2 h -2 Z M 4 24 h 2 v 2 h -2 Z M 6 24 h 2 v 2 h -2 Z M 8 24 h 2 v 2 h -2 Z M 10 24 h 2 v 2 h -2 Z M 12 24 h 2 v 2 h -2 Z M 14 24 h 2 v 2 h -2 Z M 16 24 h 2 v 2 h -2 Z M 18 24 h 2 v 2 h -2 Z M 20 24 h 2 v 2 h -2 Z M 22 24 h 2 v 2 h -2 Z M 24 24 h 2 v 2 h -2 Z M 26 24 h 2 v 2 h -2 Z M 28 24 h 2 v 2 h -2 Z M 30 24 h 2 v 2 h -2 Z M 6 26 h 2 v 2 h -2 Z M 8 26 h 2 v 2 h -2 Z M 10 26 h 2 v 2 h -2 Z M 12 26 h 2 v 2 h -2 Z M 14 26 h 2 v 2 h -2 Z M 16 26 h 2 v 2 h -2 Z M 18 26 h 2 v 2 h -2 Z M 20 26 h 2 v 2 h -2 Z M 22 26 h 2 v 2 h -2 Z M 24 26 h 2 v 2 h -2 Z M 26 26 h 2 v 2 h -2 Z M 28 26 h 2 v 2 h -2 Z M 8 28 h 2 v 2 h -2 Z M 10 28 h 2 v 2 h -2 Z M 12 28 h 2 v 2 h -2 Z M 14 28 h 2 v 2 h -2 Z M 16 28 h 2 v 2 h -2 Z M 18 28 h 2 v 2 h -2 Z M 20 28 h 2 v 2 h -2 Z M 22 28 h 2 v 2 h -2 Z M 24 28 h 2 v 2 h -2 Z M 26 28 h 2 v 2 h -2 Z M 10 30 h 2 v 2 h -2 Z M 12 30 h 2 v 2 h -2 Z M 14 30 h 2 v 2 h -2 Z M 16 30 h 2 v 2 h -2 Z M 18 30 h 2 v 2 h -2 Z M 20 30 h 2 v 2 h -2 Z M 22 30 h 2 v 2 h -2 Z M 24 30 h 2 v 2 h -2 Z M 12 32 h 2 v 2 h -2 Z M 14 32 h 2 v 2 h -2 Z M 16 32 h 2 v 2 h -2 Z M 18 32 h 2 v 2 h -2 Z M 20 32 h 2 v 2 h -2 Z M 22 32 h 2 v 2 h -2 Z M 14 34 h 2 v 2 h -2 Z M 16 34 h 2 v 2 h -2 Z M 20 34 h 2 v 2 h -2 Z M 22 34 h 2 v 2 h -2 Z M 14 36 h 2 v 2 h -2 Z M 16 36 h 2 v 2 h -2 Z M 14 38 h 2 v 2 h -2 Z M 16 38 h 2 v 2 h -2 Z" />
-        <path class="dino-color dino-run2" d="M 24 0 h 2 v 2 h -2 Z M 26 0 h 2 v 2 h -2 Z M 28 0 h 2 v 2 h -2 Z M 30 0 h 2 v 2 h -2 Z M 32 0 h 2 v 2 h -2 Z M 34 0 h 2 v 2 h -2 Z M 36 0 h 2 v 2 h -2 Z M 38 0 h 2 v 2 h -2 Z M 22 2 h 2 v 2 h -2 Z M 24 2 h 2 v 2 h -2 Z M 26 2 h 2 v 2 h -2 Z M 28 2 h 2 v 2 h -2 Z M 30 2 h 2 v 2 h -2 Z M 32 2 h 2 v 2 h -2 Z M 34 2 h 2 v 2 h -2 Z M 36 2 h 2 v 2 h -2 Z M 38 2 h 2 v 2 h -2 Z M 40 2 h 2 v 2 h -2 Z M 22 4 h 2 v 2 h -2 Z M 24 4 h 2 v 2 h -2 Z M 28 4 h 2 v 2 h -2 Z M 30 4 h 2 v 2 h -2 Z M 32 4 h 2 v 2 h -2 Z M 34 4 h 2 v 2 h -2 Z M 22 6 h 2 v 2 h -2 Z M 24 6 h 2 v 2 h -2 Z M 38 6 h 2 v 2 h -2 Z M 40 6 h 2 v 2 h -2 Z M 22 8 h 2 v 2 h -2 Z M 24 8 h 2 v 2 h -2 Z M 26 8 h 2 v 2 h -2 Z M 28 8 h 2 v 2 h -2 Z M 30 8 h 2 v 2 h -2 Z M 32 8 h 2 v 2 h -2 Z M 34 8 h 2 v 2 h -2 Z M 36 8 h 2 v 2 h -2 Z M 22 10 h 2 v 2 h -2 Z M 24 10 h 2 v 2 h -2 Z M 26 10 h 2 v 2 h -2 Z M 28 10 h 2 v 2 h -2 Z M 2 12 h 2 v 2 h -2 Z M 22 12 h 2 v 2 h -2 Z M 24 12 h 2 v 2 h -2 Z M 26 12 h 2 v 2 h -2 Z M 28 12 h 2 v 2 h -2 Z M 30 12 h 2 v 2 h -2 Z M 32 12 h 2 v 2 h -2 Z M 2 14 h 2 v 2 h -2 Z M 4 14 h 2 v 2 h -2 Z M 20 14 h 2 v 2 h -2 Z M 22 14 h 2 v 2 h -2 Z M 24 14 h 2 v 2 h -2 Z M 26 14 h 2 v 2 h -2 Z M 28 14 h 2 v 2 h -2 Z M 2 16 h 2 v 2 h -2 Z M 4 16 h 2 v 2 h -2 Z M 6 16 h 2 v 2 h -2 Z M 18 16 h 2 v 2 h -2 Z M 20 16 h 2 v 2 h -2 Z M 22 16 h 2 v 2 h -2 Z M 24 16 h 2 v 2 h -2 Z M 26 16 h 2 v 2 h -2 Z M 28 16 h 2 v 2 h -2 Z M 30 16 h 2 v 2 h -2 Z M 32 16 h 2 v 2 h -2 Z M 34 16 h 2 v 2 h -2 Z M 2 18 h 2 v 2 h -2 Z M 4 18 h 2 v 2 h -2 Z M 6 18 h 2 v 2 h -2 Z M 8 18 h 2 v 2 h -2 Z M 16 18 h 2 v 2 h -2 Z M 18 18 h 2 v 2 h -2 Z M 20 18 h 2 v 2 h -2 Z M 22 18 h 2 v 2 h -2 Z M 24 18 h 2 v 2 h -2 Z M 26 18 h 2 v 2 h -2 Z M 28 18 h 2 v 2 h -2 Z M 30 18 h 2 v 2 h -2 Z M 32 18 h 2 v 2 h -2 Z M 34 18 h 2 v 2 h -2 Z M 2 20 h 2 v 2 h -2 Z M 4 20 h 2 v 2 h -2 Z M 6 20 h 2 v 2 h -2 Z M 8 20 h 2 v 2 h -2 Z M 10 20 h 2 v 2 h -2 Z M 14 20 h 2 v 2 h -2 Z M 16 20 h 2 v 2 h -2 Z M 18 20 h 2 v 2 h -2 Z M 20 20 h 2 v 2 h -2 Z M 22 20 h 2 v 2 h -2 Z M 24 20 h 2 v 2 h -2 Z M 26 20 h 2 v 2 h -2 Z M 28 20 h 2 v 2 h -2 Z M 30 20 h 2 v 2 h -2 Z M 32 20 h 2 v 2 h -2 Z M 34 20 h 2 v 2 h -2 Z M 2 22 h 2 v 2 h -2 Z M 4 22 h 2 v 2 h -2 Z M 6 22 h 2 v 2 h -2 Z M 8 22 h 2 v 2 h -2 Z M 10 22 h 2 v 2 h -2 Z M 12 22 h 2 v 2 h -2 Z M 14 22 h 2 v 2 h -2 Z M 16 22 h 2 v 2 h -2 Z M 18 22 h 2 v 2 h -2 Z M 20 22 h 2 v 2 h -2 Z M 22 22 h 2 v 2 h -2 Z M 24 22 h 2 v 2 h -2 Z M 26 22 h 2 v 2 h -2 Z M 28 22 h 2 v 2 h -2 Z M 30 22 h 2 v 2 h -2 Z M 32 22 h 2 v 2 h -2 Z M 4 24 h 2 v 2 h -2 Z M 6 24 h 2 v 2 h -2 Z M 8 24 h 2 v 2 h -2 Z M 10 24 h 2 v 2 h -2 Z M 12 24 h 2 v 2 h -2 Z M 14 24 h 2 v 2 h -2 Z M 16 24 h 2 v 2 h -2 Z M 18 24 h 2 v 2 h -2 Z M 20 24 h 2 v 2 h -2 Z M 22 24 h 2 v 2 h -2 Z M 24 24 h 2 v 2 h -2 Z M 26 24 h 2 v 2 h -2 Z M 28 24 h 2 v 2 h -2 Z M 30 24 h 2 v 2 h -2 Z M 6 26 h 2 v 2 h -2 Z M 8 26 h 2 v 2 h -2 Z M 10 26 h 2 v 2 h -2 Z M 12 26 h 2 v 2 h -2 Z M 14 26 h 2 v 2 h -2 Z M 16 26 h 2 v 2 h -2 Z M 18 26 h 2 v 2 h -2 Z M 20 26 h 2 v 2 h -2 Z M 22 26 h 2 v 2 h -2 Z M 24 26 h 2 v 2 h -2 Z M 26 26 h 2 v 2 h -2 Z M 28 26 h 2 v 2 h -2 Z M 8 28 h 2 v 2 h -2 Z M 10 28 h 2 v 2 h -2 Z M 12 28 h 2 v 2 h -2 Z M 14 28 h 2 v 2 h -2 Z M 16 28 h 2 v 2 h -2 Z M 18 28 h 2 v 2 h -2 Z M 20 28 h 2 v 2 h -2 Z M 22 28 h 2 v 2 h -2 Z M 24 28 h 2 v 2 h -2 Z M 26 28 h 2 v 2 h -2 Z M 10 30 h 2 v 2 h -2 Z M 12 30 h 2 v 2 h -2 Z M 14 30 h 2 v 2 h -2 Z M 16 30 h 2 v 2 h -2 Z M 18 30 h 2 v 2 h -2 Z M 20 30 h 2 v 2 h -2 Z M 22 30 h 2 v 2 h -2 Z M 24 30 h 2 v 2 h -2 Z M 12 32 h 2 v 2 h -2 Z M 14 32 h 2 v 2 h -2 Z M 16 32 h 2 v 2 h -2 Z M 18 32 h 2 v 2 h -2 Z M 20 32 h 2 v 2 h -2 Z M 22 32 h 2 v 2 h -2 Z M 14 34 h 2 v 2 h -2 Z M 16 34 h 2 v 2 h -2 Z M 20 34 h 2 v 2 h -2 Z M 22 34 h 2 v 2 h -2 Z M 20 36 h 2 v 2 h -2 Z M 22 36 h 2 v 2 h -2 Z M 20 38 h 2 v 2 h -2 Z M 22 38 h 2 v 2 h -2 Z" />
-        <path class="dino-color dino-jump" d="M 24 0 h 2 v 2 h -2 Z M 26 0 h 2 v 2 h -2 Z M 28 0 h 2 v 2 h -2 Z M 30 0 h 2 v 2 h -2 Z M 32 0 h 2 v 2 h -2 Z M 34 0 h 2 v 2 h -2 Z M 36 0 h 2 v 2 h -2 Z M 38 0 h 2 v 2 h -2 Z M 22 2 h 2 v 2 h -2 Z M 24 2 h 2 v 2 h -2 Z M 26 2 h 2 v 2 h -2 Z M 28 2 h 2 v 2 h -2 Z M 30 2 h 2 v 2 h -2 Z M 32 2 h 2 v 2 h -2 Z M 34 2 h 2 v 2 h -2 Z M 36 2 h 2 v 2 h -2 Z M 38 2 h 2 v 2 h -2 Z M 40 2 h 2 v 2 h -2 Z M 22 4 h 2 v 2 h -2 Z M 24 4 h 2 v 2 h -2 Z M 28 4 h 2 v 2 h -2 Z M 30 4 h 2 v 2 h -2 Z M 32 4 h 2 v 2 h -2 Z M 34 4 h 2 v 2 h -2 Z M 22 6 h 2 v 2 h -2 Z M 24 6 h 2 v 2 h -2 Z M 38 6 h 2 v 2 h -2 Z M 40 6 h 2 v 2 h -2 Z M 22 8 h 2 v 2 h -2 Z M 24 8 h 2 v 2 h -2 Z M 26 8 h 2 v 2 h -2 Z M 28 8 h 2 v 2 h -2 Z M 30 8 h 2 v 2 h -2 Z M 32 8 h 2 v 2 h -2 Z M 34 8 h 2 v 2 h -2 Z M 36 8 h 2 v 2 h -2 Z M 22 10 h 2 v 2 h -2 Z M 24 10 h 2 v 2 h -2 Z M 26 10 h 2 v 2 h -2 Z M 28 10 h 2 v 2 h -2 Z M 2 12 h 2 v 2 h -2 Z M 22 12 h 2 v 2 h -2 Z M 24 12 h 2 v 2 h -2 Z M 26 12 h 2 v 2 h -2 Z M 28 12 h 2 v 2 h -2 Z M 30 12 h 2 v 2 h -2 Z M 32 12 h 2 v 2 h -2 Z M 2 14 h 2 v 2 h -2 Z M 4 14 h 2 v 2 h -2 Z M 20 14 h 2 v 2 h -2 Z M 22 14 h 2 v 2 h -2 Z M 24 14 h 2 v 2 h -2 Z M 26 14 h 2 v 2 h -2 Z M 28 14 h 2 v 2 h -2 Z M 2 16 h 2 v 2 h -2 Z M 4 16 h 2 v 2 h -2 Z M 6 16 h 2 v 2 h -2 Z M 18 16 h 2 v 2 h -2 Z M 20 16 h 2 v 2 h -2 Z M 22 16 h 2 v 2 h -2 Z M 24 16 h 2 v 2 h -2 Z M 26 16 h 2 v 2 h -2 Z M 28 16 h 2 v 2 h -2 Z M 30 16 h 2 v 2 h -2 Z M 32 16 h 2 v 2 h -2 Z M 34 16 h 2 v 2 h -2 Z M 2 18 h 2 v 2 h -2 Z M 4 18 h 2 v 2 h -2 Z M 6 18 h 2 v 2 h -2 Z M 8 18 h 2 v 2 h -2 Z M 16 18 h 2 v 2 h -2 Z M 18 18 h 2 v 2 h -2 Z M 20 18 h 2 v 2 h -2 Z M 22 18 h 2 v 2 h -2 Z M 24 18 h 2 v 2 h -2 Z M 26 18 h 2 v 2 h -2 Z M 28 18 h 2 v 2 h -2 Z M 30 18 h 2 v 2 h -2 Z M 32 18 h 2 v 2 h -2 Z M 34 18 h 2 v 2 h -2 Z M 2 20 h 2 v 2 h -2 Z M 4 20 h 2 v 2 h -2 Z M 6 20 h 2 v 2 h -2 Z M 8 20 h 2 v 2 h -2 Z M 10 20 h 2 v 2 h -2 Z M 14 20 h 2 v 2 h -2 Z M 16 20 h 2 v 2 h -2 Z M 18 20 h 2 v 2 h -2 Z M 20 20 h 2 v 2 h -2 Z M 22 20 h 2 v 2 h -2 Z M 24 20 h 2 v 2 h -2 Z M 26 20 h 2 v 2 h -2 Z M 28 20 h 2 v 2 h -2 Z M 30 20 h 2 v 2 h -2 Z M 32 20 h 2 v 2 h -2 Z M 34 20 h 2 v 2 h -2 Z M 2 22 h 2 v 2 h -2 Z M 4 22 h 2 v 2 h -2 Z M 6 22 h 2 v 2 h -2 Z M 8 22 h 2 v 2 h -2 Z M 10 22 h 2 v 2 h -2 Z M 12 22 h 2 v 2 h -2 Z M 14 22 h 2 v 2 h -2 Z M 16 22 h 2 v 2 h -2 Z M 18 22 h 2 v 2 h -2 Z M 20 22 h 2 v 2 h -2 Z M 22 22 h 2 v 2 h -2 Z M 24 22 h 2 v 2 h -2 Z M 26 22 h 2 v 2 h -2 Z M 28 22 h 2 v 2 h -2 Z M 30 22 h 2 v 2 h -2 Z M 32 22 h 2 v 2 h -2 Z M 4 24 h 2 v 2 h -2 Z M 6 24 h 2 v 2 h -2 Z M 8 24 h 2 v 2 h -2 Z M 10 24 h 2 v 2 h -2 Z M 12 24 h 2 v 2 h -2 Z M 14 24 h 2 v 2 h -2 Z M 16 24 h 2 v 2 h -2 Z M 18 24 h 2 v 2 h -2 Z M 20 24 h 2 v 2 h -2 Z M 22 24 h 2 v 2 h -2 Z M 24 24 h 2 v 2 h -2 Z M 26 24 h 2 v 2 h -2 Z M 28 24 h 2 v 2 h -2 Z M 30 24 h 2 v 2 h -2 Z M 6 26 h 2 v 2 h -2 Z M 8 26 h 2 v 2 h -2 Z M 10 26 h 2 v 2 h -2 Z M 12 26 h 2 v 2 h -2 Z M 14 26 h 2 v 2 h -2 Z M 16 26 h 2 v 2 h -2 Z M 18 26 h 2 v 2 h -2 Z M 20 26 h 2 v 2 h -2 Z M 22 26 h 2 v 2 h -2 Z M 24 26 h 2 v 2 h -2 Z M 26 26 h 2 v 2 h -2 Z M 28 26 h 2 v 2 h -2 Z M 8 28 h 2 v 2 h -2 Z M 10 28 h 2 v 2 h -2 Z M 12 28 h 2 v 2 h -2 Z M 14 28 h 2 v 2 h -2 Z M 16 28 h 2 v 2 h -2 Z M 18 28 h 2 v 2 h -2 Z M 20 28 h 2 v 2 h -2 Z M 22 28 h 2 v 2 h -2 Z M 24 28 h 2 v 2 h -2 Z M 26 28 h 2 v 2 h -2 Z M 10 30 h 2 v 2 h -2 Z M 12 30 h 2 v 2 h -2 Z M 14 30 h 2 v 2 h -2 Z M 16 30 h 2 v 2 h -2 Z M 18 30 h 2 v 2 h -2 Z M 20 30 h 2 v 2 h -2 Z M 22 30 h 2 v 2 h -2 Z M 24 30 h 2 v 2 h -2 Z M 12 32 h 2 v 2 h -2 Z M 14 32 h 2 v 2 h -2 Z M 16 32 h 2 v 2 h -2 Z M 18 32 h 2 v 2 h -2 Z M 20 32 h 2 v 2 h -2 Z M 22 32 h 2 v 2 h -2 Z M 14 34 h 2 v 2 h -2 Z M 16 34 h 2 v 2 h -2 Z M 20 34 h 2 v 2 h -2 Z M 22 34 h 2 v 2 h -2 Z M 14 36 h 2 v 2 h -2 Z M 16 36 h 2 v 2 h -2 Z M 20 36 h 2 v 2 h -2 Z M 22 36 h 2 v 2 h -2 Z M 14 38 h 2 v 2 h -2 Z M 22 38 h 2 v 2 h -2 Z" />
+        <!-- Body (Cyan) -->
+        <path class="dino-color dino-run1 glow-cyan" d="M 24 0 h 2 v 2 h -2 Z M 26 0 h 2 v 2 h -2 Z M 28 0 h 2 v 2 h -2 Z M 30 0 h 2 v 2 h -2 Z M 32 0 h 2 v 2 h -2 Z M 34 0 h 2 v 2 h -2 Z M 36 0 h 2 v 2 h -2 Z M 38 0 h 2 v 2 h -2 Z M 22 2 h 2 v 2 h -2 Z M 24 2 h 2 v 2 h -2 Z M 26 2 h 2 v 2 h -2 Z M 28 2 h 2 v 2 h -2 Z M 30 2 h 2 v 2 h -2 Z M 32 2 h 2 v 2 h -2 Z M 34 2 h 2 v 2 h -2 Z M 36 2 h 2 v 2 h -2 Z M 38 2 h 2 v 2 h -2 Z M 40 2 h 2 v 2 h -2 Z M 22 4 h 2 v 2 h -2 Z M 24 4 h 2 v 2 h -2 Z M 28 4 h 2 v 2 h -2 Z M 30 4 h 2 v 2 h -2 Z M 32 4 h 2 v 2 h -2 Z M 34 4 h 2 v 2 h -2 Z M 36 4 h 2 v 2 h -2 Z M 38 4 h 2 v 2 h -2 Z M 40 4 h 2 v 2 h -2 Z M 22 6 h 2 v 2 h -2 Z M 24 6 h 2 v 2 h -2 Z M 26 6 h 2 v 2 h -2 Z M 28 6 h 2 v 2 h -2 Z M 30 6 h 2 v 2 h -2 Z M 32 6 h 2 v 2 h -2 Z M 34 6 h 2 v 2 h -2 Z M 36 6 h 2 v 2 h -2 Z M 38 6 h 2 v 2 h -2 Z M 40 6 h 2 v 2 h -2 Z M 22 8 h 2 v 2 h -2 Z M 24 8 h 2 v 2 h -2 Z M 26 8 h 2 v 2 h -2 Z M 28 8 h 2 v 2 h -2 Z M 30 8 h 2 v 2 h -2 Z M 32 8 h 2 v 2 h -2 Z M 22 10 h 2 v 2 h -2 Z M 24 10 h 2 v 2 h -2 Z M 26 10 h 2 v 2 h -2 Z M 28 10 h 2 v 2 h -2 Z M 22 12 h 2 v 2 h -2 Z M 24 12 h 2 v 2 h -2 Z M 26 12 h 2 v 2 h -2 Z M 28 12 h 2 v 2 h -2 Z M 30 12 h 2 v 2 h -2 Z M 32 12 h 2 v 2 h -2 Z M 20 14 h 2 v 2 h -2 Z M 22 14 h 2 v 2 h -2 Z M 24 14 h 2 v 2 h -2 Z M 26 14 h 2 v 2 h -2 Z M 28 14 h 2 v 2 h -2 Z M 18 16 h 2 v 2 h -2 Z M 20 16 h 2 v 2 h -2 Z M 22 16 h 2 v 2 h -2 Z M 24 16 h 2 v 2 h -2 Z M 26 16 h 2 v 2 h -2 Z M 28 16 h 2 v 2 h -2 Z M 30 16 h 2 v 2 h -2 Z M 32 16 h 2 v 2 h -2 Z M 34 16 h 2 v 2 h -2 Z M 16 18 h 2 v 2 h -2 Z M 18 18 h 2 v 2 h -2 Z M 20 18 h 2 v 2 h -2 Z M 22 18 h 2 v 2 h -2 Z M 24 18 h 2 v 2 h -2 Z M 26 18 h 2 v 2 h -2 Z M 28 18 h 2 v 2 h -2 Z M 30 18 h 2 v 2 h -2 Z M 32 18 h 2 v 2 h -2 Z M 34 18 h 2 v 2 h -2 Z M 14 20 h 2 v 2 h -2 Z M 16 20 h 2 v 2 h -2 Z M 18 20 h 2 v 2 h -2 Z M 20 20 h 2 v 2 h -2 Z M 22 20 h 2 v 2 h -2 Z M 24 20 h 2 v 2 h -2 Z M 26 20 h 2 v 2 h -2 Z M 28 20 h 2 v 2 h -2 Z M 30 20 h 2 v 2 h -2 Z M 32 20 h 2 v 2 h -2 Z M 34 20 h 2 v 2 h -2 Z M 2 22 h 2 v 2 h -2 Z M 4 22 h 2 v 2 h -2 Z M 6 22 h 2 v 2 h -2 Z M 8 22 h 2 v 2 h -2 Z M 10 22 h 2 v 2 h -2 Z M 12 22 h 2 v 2 h -2 Z M 14 22 h 2 v 2 h -2 Z M 16 22 h 2 v 2 h -2 Z M 18 22 h 2 v 2 h -2 Z M 20 22 h 2 v 2 h -2 Z M 22 22 h 2 v 2 h -2 Z M 24 22 h 2 v 2 h -2 Z M 26 22 h 2 v 2 h -2 Z M 28 22 h 2 v 2 h -2 Z M 30 22 h 2 v 2 h -2 Z M 32 22 h 2 v 2 h -2 Z M 4 24 h 2 v 2 h -2 Z M 6 24 h 2 v 2 h -2 Z M 8 24 h 2 v 2 h -2 Z M 10 24 h 2 v 2 h -2 Z M 12 24 h 2 v 2 h -2 Z M 14 24 h 2 v 2 h -2 Z M 16 24 h 2 v 2 h -2 Z M 18 24 h 2 v 2 h -2 Z M 20 24 h 2 v 2 h -2 Z M 22 24 h 2 v 2 h -2 Z M 24 24 h 2 v 2 h -2 Z M 26 24 h 2 v 2 h -2 Z M 28 24 h 2 v 2 h -2 Z M 30 24 h 2 v 2 h -2 Z M 6 26 h 2 v 2 h -2 Z M 8 26 h 2 v 2 h -2 Z M 10 26 h 2 v 2 h -2 Z M 12 26 h 2 v 2 h -2 Z M 14 26 h 2 v 2 h -2 Z M 16 26 h 2 v 2 h -2 Z M 18 26 h 2 v 2 h -2 Z M 20 26 h 2 v 2 h -2 Z M 22 26 h 2 v 2 h -2 Z M 24 26 h 2 v 2 h -2 Z M 26 26 h 2 v 2 h -2 Z M 28 26 h 2 v 2 h -2 Z M 8 28 h 2 v 2 h -2 Z M 10 28 h 2 v 2 h -2 Z M 12 28 h 2 v 2 h -2 Z M 14 28 h 2 v 2 h -2 Z M 16 28 h 2 v 2 h -2 Z M 18 28 h 2 v 2 h -2 Z M 20 28 h 2 v 2 h -2 Z M 22 28 h 2 v 2 h -2 Z M 24 28 h 2 v 2 h -2 Z M 26 28 h 2 v 2 h -2 Z M 10 30 h 2 v 2 h -2 Z M 12 30 h 2 v 2 h -2 Z M 14 30 h 2 v 2 h -2 Z M 16 30 h 2 v 2 h -2 Z M 18 30 h 2 v 2 h -2 Z M 20 30 h 2 v 2 h -2 Z M 22 30 h 2 v 2 h -2 Z M 24 30 h 2 v 2 h -2 Z M 12 32 h 2 v 2 h -2 Z M 14 32 h 2 v 2 h -2 Z M 16 32 h 2 v 2 h -2 Z M 18 32 h 2 v 2 h -2 Z M 20 32 h 2 v 2 h -2 Z M 22 32 h 2 v 2 h -2 Z M 14 34 h 2 v 2 h -2 Z M 16 34 h 2 v 2 h -2 Z M 20 34 h 2 v 2 h -2 Z M 22 34 h 2 v 2 h -2 Z M 14 36 h 2 v 2 h -2 Z M 16 36 h 2 v 2 h -2 Z M 14 38 h 2 v 2 h -2 Z M 16 38 h 2 v 2 h -2 Z" />
+        <path class="dino-color dino-run2 glow-cyan" d="M 24 0 h 2 v 2 h -2 Z M 26 0 h 2 v 2 h -2 Z M 28 0 h 2 v 2 h -2 Z M 30 0 h 2 v 2 h -2 Z M 32 0 h 2 v 2 h -2 Z M 34 0 h 2 v 2 h -2 Z M 36 0 h 2 v 2 h -2 Z M 38 0 h 2 v 2 h -2 Z M 22 2 h 2 v 2 h -2 Z M 24 2 h 2 v 2 h -2 Z M 26 2 h 2 v 2 h -2 Z M 28 2 h 2 v 2 h -2 Z M 30 2 h 2 v 2 h -2 Z M 32 2 h 2 v 2 h -2 Z M 34 2 h 2 v 2 h -2 Z M 36 2 h 2 v 2 h -2 Z M 38 2 h 2 v 2 h -2 Z M 40 2 h 2 v 2 h -2 Z M 22 4 h 2 v 2 h -2 Z M 24 4 h 2 v 2 h -2 Z M 28 4 h 2 v 2 h -2 Z M 30 4 h 2 v 2 h -2 Z M 32 4 h 2 v 2 h -2 Z M 34 4 h 2 v 2 h -2 Z M 22 6 h 2 v 2 h -2 Z M 24 6 h 2 v 2 h -2 Z M 38 6 h 2 v 2 h -2 Z M 40 6 h 2 v 2 h -2 Z M 22 8 h 2 v 2 h -2 Z M 24 8 h 2 v 2 h -2 Z M 26 8 h 2 v 2 h -2 Z M 28 8 h 2 v 2 h -2 Z M 30 8 h 2 v 2 h -2 Z M 32 8 h 2 v 2 h -2 Z M 34 8 h 2 v 2 h -2 Z M 36 8 h 2 v 2 h -2 Z M 22 10 h 2 v 2 h -2 Z M 24 10 h 2 v 2 h -2 Z M 26 10 h 2 v 2 h -2 Z M 28 10 h 2 v 2 h -2 Z M 22 12 h 2 v 2 h -2 Z M 24 12 h 2 v 2 h -2 Z M 26 12 h 2 v 2 h -2 Z M 28 12 h 2 v 2 h -2 Z M 30 12 h 2 v 2 h -2 Z M 32 12 h 2 v 2 h -2 Z M 20 14 h 2 v 2 h -2 Z M 22 14 h 2 v 2 h -2 Z M 24 14 h 2 v 2 h -2 Z M 26 14 h 2 v 2 h -2 Z M 28 14 h 2 v 2 h -2 Z M 18 16 h 2 v 2 h -2 Z M 20 16 h 2 v 2 h -2 Z M 22 16 h 2 v 2 h -2 Z M 24 16 h 2 v 2 h -2 Z M 26 16 h 2 v 2 h -2 Z M 28 16 h 2 v 2 h -2 Z M 30 16 h 2 v 2 h -2 Z M 32 16 h 2 v 2 h -2 Z M 34 16 h 2 v 2 h -2 Z M 16 18 h 2 v 2 h -2 Z M 18 18 h 2 v 2 h -2 Z M 20 18 h 2 v 2 h -2 Z M 22 18 h 2 v 2 h -2 Z M 24 18 h 2 v 2 h -2 Z M 26 18 h 2 v 2 h -2 Z M 28 18 h 2 v 2 h -2 Z M 30 18 h 2 v 2 h -2 Z M 32 18 h 2 v 2 h -2 Z M 34 18 h 2 v 2 h -2 Z M 14 20 h 2 v 2 h -2 Z M 16 20 h 2 v 2 h -2 Z M 18 20 h 2 v 2 h -2 Z M 20 20 h 2 v 2 h -2 Z M 22 20 h 2 v 2 h -2 Z M 24 20 h 2 v 2 h -2 Z M 26 20 h 2 v 2 h -2 Z M 28 20 h 2 v 2 h -2 Z M 30 20 h 2 v 2 h -2 Z M 32 20 h 2 v 2 h -2 Z M 34 20 h 2 v 2 h -2 Z M 2 22 h 2 v 2 h -2 Z M 4 22 h 2 v 2 h -2 Z M 6 22 h 2 v 2 h -2 Z M 8 22 h 2 v 2 h -2 Z M 10 22 h 2 v 2 h -2 Z M 12 22 h 2 v 2 h -2 Z M 14 22 h 2 v 2 h -2 Z M 16 22 h 2 v 2 h -2 Z M 18 22 h 2 v 2 h -2 Z M 20 22 h 2 v 2 h -2 Z M 22 22 h 2 v 2 h -2 Z M 24 22 h 2 v 2 h -2 Z M 26 22 h 2 v 2 h -2 Z M 28 22 h 2 v 2 h -2 Z M 30 22 h 2 v 2 h -2 Z M 32 22 h 2 v 2 h -2 Z M 4 24 h 2 v 2 h -2 Z M 6 24 h 2 v 2 h -2 Z M 8 24 h 2 v 2 h -2 Z M 10 24 h 2 v 2 h -2 Z M 12 24 h 2 v 2 h -2 Z M 14 24 h 2 v 2 h -2 Z M 16 24 h 2 v 2 h -2 Z M 18 24 h 2 v 2 h -2 Z M 20 24 h 2 v 2 h -2 Z M 22 24 h 2 v 2 h -2 Z M 24 24 h 2 v 2 h -2 Z M 26 24 h 2 v 2 h -2 Z M 28 24 h 2 v 2 h -2 Z M 30 24 h 2 v 2 h -2 Z M 6 26 h 2 v 2 h -2 Z M 8 26 h 2 v 2 h -2 Z M 10 26 h 2 v 2 h -2 Z M 12 26 h 2 v 2 h -2 Z M 14 26 h 2 v 2 h -2 Z M 16 26 h 2 v 2 h -2 Z M 18 26 h 2 v 2 h -2 Z M 20 26 h 2 v 2 h -2 Z M 22 26 h 2 v 2 h -2 Z M 24 26 h 2 v 2 h -2 Z M 26 26 h 2 v 2 h -2 Z M 28 26 h 2 v 2 h -2 Z M 8 28 h 2 v 2 h -2 Z M 10 28 h 2 v 2 h -2 Z M 12 28 h 2 v 2 h -2 Z M 14 28 h 2 v 2 h -2 Z M 16 28 h 2 v 2 h -2 Z M 18 28 h 2 v 2 h -2 Z M 20 28 h 2 v 2 h -2 Z M 22 28 h 2 v 2 h -2 Z M 24 28 h 2 v 2 h -2 Z M 26 28 h 2 v 2 h -2 Z M 10 30 h 2 v 2 h -2 Z M 12 30 h 2 v 2 h -2 Z M 14 30 h 2 v 2 h -2 Z M 16 30 h 2 v 2 h -2 Z M 18 30 h 2 v 2 h -2 Z M 20 30 h 2 v 2 h -2 Z M 22 30 h 2 v 2 h -2 Z M 24 30 h 2 v 2 h -2 Z M 12 32 h 2 v 2 h -2 Z M 14 32 h 2 v 2 h -2 Z M 16 32 h 2 v 2 h -2 Z M 18 32 h 2 v 2 h -2 Z M 20 32 h 2 v 2 h -2 Z M 22 32 h 2 v 2 h -2 Z M 14 34 h 2 v 2 h -2 Z M 16 34 h 2 v 2 h -2 Z M 20 34 h 2 v 2 h -2 Z M 22 34 h 2 v 2 h -2 Z M 20 36 h 2 v 2 h -2 Z M 22 36 h 2 v 2 h -2 Z M 20 38 h 2 v 2 h -2 Z M 22 38 h 2 v 2 h -2 Z" />
+        <path class="dino-color dino-jump glow-cyan" d="M 24 0 h 2 v 2 h -2 Z M 26 0 h 2 v 2 h -2 Z M 28 0 h 2 v 2 h -2 Z M 30 0 h 2 v 2 h -2 Z M 32 0 h 2 v 2 h -2 Z M 34 0 h 2 v 2 h -2 Z M 36 0 h 2 v 2 h -2 Z M 38 0 h 2 v 2 h -2 Z M 22 2 h 2 v 2 h -2 Z M 24 2 h 2 v 2 h -2 Z M 26 2 h 2 v 2 h -2 Z M 28 2 h 2 v 2 h -2 Z M 30 2 h 2 v 2 h -2 Z M 32 2 h 2 v 2 h -2 Z M 34 2 h 2 v 2 h -2 Z M 36 2 h 2 v 2 h -2 Z M 38 2 h 2 v 2 h -2 Z M 40 2 h 2 v 2 h -2 Z M 22 4 h 2 v 2 h -2 Z M 24 4 h 2 v 2 h -2 Z M 28 4 h 2 v 2 h -2 Z M 30 4 h 2 v 2 h -2 Z M 32 4 h 2 v 2 h -2 Z M 34 4 h 2 v 2 h -2 Z M 22 6 h 2 v 2 h -2 Z M 24 6 h 2 v 2 h -2 Z M 38 6 h 2 v 2 h -2 Z M 40 6 h 2 v 2 h -2 Z M 22 8 h 2 v 2 h -2 Z M 24 8 h 2 v 2 h -2 Z M 26 8 h 2 v 2 h -2 Z M 28 8 h 2 v 2 h -2 Z M 30 8 h 2 v 2 h -2 Z M 32 8 h 2 v 2 h -2 Z M 34 8 h 2 v 2 h -2 Z M 36 8 h 2 v 2 h -2 Z M 22 10 h 2 v 2 h -2 Z M 24 10 h 2 v 2 h -2 Z M 26 10 h 2 v 2 h -2 Z M 28 10 h 2 v 2 h -2 Z M 22 12 h 2 v 2 h -2 Z M 24 12 h 2 v 2 h -2 Z M 26 12 h 2 v 2 h -2 Z M 28 12 h 2 v 2 h -2 Z M 30 12 h 2 v 2 h -2 Z M 32 12 h 2 v 2 h -2 Z M 20 14 h 2 v 2 h -2 Z M 22 14 h 2 v 2 h -2 Z M 24 14 h 2 v 2 h -2 Z M 26 14 h 2 v 2 h -2 Z M 28 14 h 2 v 2 h -2 Z M 18 16 h 2 v 2 h -2 Z M 20 16 h 2 v 2 h -2 Z M 22 16 h 2 v 2 h -2 Z M 24 16 h 2 v 2 h -2 Z M 26 16 h 2 v 2 h -2 Z M 28 16 h 2 v 2 h -2 Z M 30 16 h 2 v 2 h -2 Z M 32 16 h 2 v 2 h -2 Z M 34 16 h 2 v 2 h -2 Z M 16 18 h 2 v 2 h -2 Z M 18 18 h 2 v 2 h -2 Z M 20 18 h 2 v 2 h -2 Z M 22 18 h 2 v 2 h -2 Z M 24 18 h 2 v 2 h -2 Z M 26 18 h 2 v 2 h -2 Z M 28 18 h 2 v 2 h -2 Z M 30 18 h 2 v 2 h -2 Z M 32 18 h 2 v 2 h -2 Z M 34 18 h 2 v 2 h -2 Z M 14 20 h 2 v 2 h -2 Z M 16 20 h 2 v 2 h -2 Z M 18 20 h 2 v 2 h -2 Z M 20 20 h 2 v 2 h -2 Z M 22 20 h 2 v 2 h -2 Z M 24 20 h 2 v 2 h -2 Z M 26 20 h 2 v 2 h -2 Z M 28 20 h 2 v 2 h -2 Z M 30 20 h 2 v 2 h -2 Z M 32 20 h 2 v 2 h -2 Z M 34 20 h 2 v 2 h -2 Z M 2 22 h 2 v 2 h -2 Z M 4 22 h 2 v 2 h -2 Z M 6 22 h 2 v 2 h -2 Z M 8 22 h 2 v 2 h -2 Z M 10 22 h 2 v 2 h -2 Z M 12 22 h 2 v 2 h -2 Z M 14 22 h 2 v 2 h -2 Z M 16 22 h 2 v 2 h -2 Z M 18 22 h 2 v 2 h -2 Z M 20 22 h 2 v 2 h -2 Z M 22 22 h 2 v 2 h -2 Z M 24 22 h 2 v 2 h -2 Z M 26 22 h 2 v 2 h -2 Z M 28 22 h 2 v 2 h -2 Z M 30 22 h 2 v 2 h -2 Z M 32 22 h 2 v 2 h -2 Z M 4 24 h 2 v 2 h -2 Z M 6 24 h 2 v 2 h -2 Z M 8 24 h 2 v 2 h -2 Z M 10 24 h 2 v 2 h -2 Z M 12 24 h 2 v 2 h -2 Z M 14 24 h 2 v 2 h -2 Z M 16 24 h 2 v 2 h -2 Z M 18 24 h 2 v 2 h -2 Z M 20 24 h 2 v 2 h -2 Z M 22 24 h 2 v 2 h -2 Z M 24 24 h 2 v 2 h -2 Z M 26 24 h 2 v 2 h -2 Z M 28 24 h 2 v 2 h -2 Z M 30 24 h 2 v 2 h -2 Z M 6 26 h 2 v 2 h -2 Z M 8 26 h 2 v 2 h -2 Z M 10 26 h 2 v 2 h -2 Z M 12 26 h 2 v 2 h -2 Z M 14 26 h 2 v 2 h -2 Z M 16 26 h 2 v 2 h -2 Z M 18 26 h 2 v 2 h -2 Z M 20 26 h 2 v 2 h -2 Z M 22 26 h 2 v 2 h -2 Z M 24 26 h 2 v 2 h -2 Z M 26 26 h 2 v 2 h -2 Z M 28 26 h 2 v 2 h -2 Z M 8 28 h 2 v 2 h -2 Z M 10 28 h 2 v 2 h -2 Z M 12 28 h 2 v 2 h -2 Z M 14 28 h 2 v 2 h -2 Z M 16 28 h 2 v 2 h -2 Z M 18 28 h 2 v 2 h -2 Z M 20 28 h 2 v 2 h -2 Z M 22 28 h 2 v 2 h -2 Z M 24 28 h 2 v 2 h -2 Z M 26 28 h 2 v 2 h -2 Z M 10 30 h 2 v 2 h -2 Z M 12 30 h 2 v 2 h -2 Z M 14 30 h 2 v 2 h -2 Z M 16 30 h 2 v 2 h -2 Z M 18 30 h 2 v 2 h -2 Z M 20 30 h 2 v 2 h -2 Z M 22 30 h 2 v 2 h -2 Z M 24 30 h 2 v 2 h -2 Z M 12 32 h 2 v 2 h -2 Z M 14 32 h 2 v 2 h -2 Z M 16 32 h 2 v 2 h -2 Z M 18 32 h 2 v 2 h -2 Z M 20 32 h 2 v 2 h -2 Z M 22 32 h 2 v 2 h -2 Z M 14 34 h 2 v 2 h -2 Z M 16 34 h 2 v 2 h -2 Z M 20 34 h 2 v 2 h -2 Z M 22 34 h 2 v 2 h -2 Z M 14 36 h 2 v 2 h -2 Z M 16 36 h 2 v 2 h -2 Z M 20 36 h 2 v 2 h -2 Z M 22 36 h 2 v 2 h -2 Z M 14 38 h 2 v 2 h -2 Z M 22 38 h 2 v 2 h -2 Z" />
+        
+        <!-- Spikes (Neon Pink) -->
+        <path class="dino-run1 glow-magenta" d="M 2 12 h 2 v 2 h -2 Z M 2 14 h 2 v 2 h -2 Z M 4 14 h 2 v 2 h -2 Z M 2 16 h 2 v 2 h -2 Z M 4 16 h 2 v 2 h -2 Z M 6 16 h 2 v 2 h -2 Z M 2 18 h 2 v 2 h -2 Z M 4 18 h 2 v 2 h -2 Z M 6 18 h 2 v 2 h -2 Z M 8 18 h 2 v 2 h -2 Z M 2 20 h 2 v 2 h -2 Z M 4 20 h 2 v 2 h -2 Z M 6 20 h 2 v 2 h -2 Z M 8 20 h 2 v 2 h -2 Z M 10 20 h 2 v 2 h -2 Z" fill="#ff007f" />
+        <path class="dino-run2 glow-magenta" d="M 2 12 h 2 v 2 h -2 Z M 2 14 h 2 v 2 h -2 Z M 4 14 h 2 v 2 h -2 Z M 2 16 h 2 v 2 h -2 Z M 4 16 h 2 v 2 h -2 Z M 6 16 h 2 v 2 h -2 Z M 2 18 h 2 v 2 h -2 Z M 4 18 h 2 v 2 h -2 Z M 6 18 h 2 v 2 h -2 Z M 8 18 h 2 v 2 h -2 Z M 2 20 h 2 v 2 h -2 Z M 4 20 h 2 v 2 h -2 Z M 6 20 h 2 v 2 h -2 Z M 8 20 h 2 v 2 h -2 Z M 10 20 h 2 v 2 h -2 Z" fill="#ff007f" />
+        <path class="dino-jump glow-magenta" d="M 2 12 h 2 v 2 h -2 Z M 2 14 h 2 v 2 h -2 Z M 4 14 h 2 v 2 h -2 Z M 2 16 h 2 v 2 h -2 Z M 4 16 h 2 v 2 h -2 Z M 6 16 h 2 v 2 h -2 Z M 2 18 h 2 v 2 h -2 Z M 4 18 h 2 v 2 h -2 Z M 6 18 h 2 v 2 h -2 Z M 8 18 h 2 v 2 h -2 Z M 2 20 h 2 v 2 h -2 Z M 4 20 h 2 v 2 h -2 Z M 6 20 h 2 v 2 h -2 Z M 8 20 h 2 v 2 h -2 Z M 10 20 h 2 v 2 h -2 Z" fill="#ff007f" />
+        
+        <!-- Eye (Neon Red) -->
+        <path class="dino-run1" d="M 26 4 h 2 v 2 h -2 Z" fill="#ff0033" filter="drop-shadow(0 0 2px #ff0033)" />
+        <path class="dino-run2" d="M 26 4 h 2 v 2 h -2 Z" fill="#ff0033" filter="drop-shadow(0 0 2px #ff0033)" />
+        <path class="dino-jump" d="M 26 4 h 2 v 2 h -2 Z" fill="#ff0033" filter="drop-shadow(0 0 2px #ff0033)" />
       </g>
     </g>
   </g>
