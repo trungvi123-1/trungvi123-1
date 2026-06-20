@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="./banner.png" alt="Trung Vi Pixel AI Engineer Banner" width="100%">
+  <img src="./banner.svg" alt="Trung Vi AI Engineer Terminal" width="100%">
 </p>
 
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Press+Start+2P&size=14&duration=3000&pause=1000&color=39FF14&center=true&vCenter=true&width=700&lines=Hi%2C+I'm+Trung+Vi+%F0%9F%91%8B;AI+Engineer;Deep+Learning+%26+LLMs;Building+Intelligent+Systems" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&duration=3000&pause=1000&color=39FF14&center=true&vCenter=true&width=700&lines=Hi%2C+I'm+Trung+Vi+%F0%9F%91%8B;AI+Engineer;Deep+Learning+%26+LLMs;Building+Intelligent+Systems" alt="Typing SVG" />
   </a>
 </p>
 
