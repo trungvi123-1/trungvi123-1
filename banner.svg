@@ -2,47 +2,73 @@
   <style>
     .bg { fill: #0D1117; }
 
-    @keyframes run {
-      0%   { transform: translateX(-60px); }
-      100% { transform: translateX(860px); }
+    /* Dino runs across, jumps over text, lands, exits */
+    @keyframes dino-run {
+      0%    { transform: translate(-100px, 0); }
+      35%   { transform: translate(180px, 0); }
+      45%   { transform: translate(280px, -50px); }
+      55%   { transform: translate(380px, -55px); }
+      65%   { transform: translate(500px, -30px); }
+      75%   { transform: translate(600px, 0); }
+      100%  { transform: translate(900px, 0); }
     }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      30%       { transform: translateY(-25px); }
-      60%       { transform: translateY(0); }
+
+    /* Text bounce when dino lands */
+    @keyframes text-shake {
+      0%, 70%, 100% { transform: translateY(0); }
+      72%  { transform: translateY(-3px); }
+      74%  { transform: translateY(2px); }
+      76%  { transform: translateY(-1px); }
+      78%  { transform: translateY(0); }
     }
+
+    /* Text glow pulse when dino is overhead */
+    @keyframes text-glow-pulse {
+      0%, 40%, 65%, 100% { opacity: 0.7; }
+      45%, 60% { opacity: 1; filter: url(#glow-strong); }
+    }
+
     @keyframes blink {
       0%, 49%  { opacity: 1; }
       50%, 100% { opacity: 0; }
     }
+
     @keyframes ground-scroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-16px); }
     }
 
-    .dino-run {
-      animation: run 6s linear infinite;
+    @keyframes star-twinkle {
+      0%, 100% { opacity: 0.1; }
+      50%       { opacity: 0.5; }
     }
-    .dino-bounce {
-      animation: bounce 6s linear infinite, run 6s linear infinite;
-    }
+
+    .dino { animation: dino-run 6s linear infinite; }
+    .text-group { animation: text-shake 6s linear infinite; }
+    .text-glow { animation: text-glow-pulse 6s linear infinite; }
     .cursor { animation: blink 1s step-end infinite; }
-    .ground { animation: ground-scroll 0.4s linear infinite; }
+    .ground-scroll { animation: ground-scroll 0.3s linear infinite; }
   </style>
 
   <defs>
-    <filter id="soft-glow">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-
-    <!-- Ground pattern -->
-    <pattern id="ground-pat" width="16" height="4" patternUnits="userSpaceOnUse">
-      <rect x="0" y="0" width="8" height="2" fill="#D97706" opacity="0.12"/>
-      <rect x="12" y="0" width="4" height="2" fill="#D97706" opacity="0.08"/>
+    <filter id="glow-strong">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="ground" width="12" height="3" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="6" height="1.5" fill="#D97706" opacity="0.1"/>
+      <rect x="8" y="0" width="4" height="1.5" fill="#D97706" opacity="0.06"/>
     </pattern>
   </defs>
 
@@ -50,98 +76,99 @@
   <rect class="bg" width="800" height="220" rx="6"/>
 
   <!-- Ground -->
-  <line x1="0" y1="195" x2="800" y2="195" stroke="#D97706" stroke-width="1" opacity="0.15"/>
-  <rect x="0" y="196" width="800" height="24" fill="url(#ground-pat)" class="ground"/>
+  <line x1="0" y1="202" x2="800" y2="202" stroke="#D97706" stroke-width="1" opacity="0.15"/>
+  <rect x="0" y="203" width="800" height="17" fill="url(#ground)" class="ground-scroll"/>
 
-  <!-- Ground pixel bumps -->
-  <g fill="#D97706" opacity="0.15">
-    <rect x="40" y="194" width="4" height="2"/>
-    <rect x="120" y="194" width="6" height="2"/>
-    <rect x="200" y="194" width="3" height="2"/>
-    <rect x="310" y="194" width="5" height="2"/>
-    <rect x="430" y="194" width="4" height="2"/>
-    <rect x="560" y="194" width="6" height="2"/>
-    <rect x="680" y="194" width="3" height="2"/>
-    <rect x="750" y="194" width="5" height="2"/>
+  <!-- ====== CACTUS ====== -->
+  <g fill="#D97706" opacity="0.2">
+    <!-- Left cactus -->
+    <rect x="100" y="174" width="6" height="28"/>
+    <rect x="97" y="180" width="3" height="8"/>
+    <rect x="109" y="184" width="3" height="10"/>
+    <!-- Right cactus -->
+    <rect x="650" y="170" width="6" height="32"/>
+    <rect x="647" y="176" width="3" height="8"/>
+    <rect x="659" y="180" width="3" height="10"/>
+    <rect x="656" y="168" width="3" height="2"/>
   </g>
 
-  <!-- ====== PIXEL DINOSAUR (Chrome T-Rex style) ====== -->
-  <g class="dino-bounce">
-    <!-- Body - main block -->
-    <rect x="140" y="145" width="6" height="4" fill="#D97706"/>
-    <rect x="146" y="141" width="10" height="8" fill="#D97706"/>
-    <rect x="156" y="137" width="8" height="4" fill="#D97706"/>
-    <rect x="164" y="135" width="4" height="2" fill="#D97706"/>
+  <!-- ====== PIXEL DINOSAUR (large - 2x scale) ====== -->
+  <g class="dino">
+    <!-- Shadow on ground -->
+    <ellipse cx="0" cy="202" rx="30" ry="3" fill="#000" opacity="0.3"/>
+
+    <!-- Body -->
+    <rect x="-40" y="152" width="8" height="8" fill="#D97706"/>
+    <rect x="-32" y="144" width="14" height="16" fill="#D97706"/>
+    <rect x="-18" y="138" width="12" height="6" fill="#D97706"/>
+    <rect x="-6" y="134" width="8" height="4" fill="#D97706"/>
+
     <!-- Head -->
-    <rect x="168" y="131" width="8" height="6" fill="#D97706"/>
-    <rect x="176" y="131" width="4" height="2" fill="#D97706"/>
+    <rect x="2" y="128" width="14" height="10" fill="#D97706"/>
+    <rect x="16" y="128" width="6" height="4" fill="#D97706"/>
+
     <!-- Eye -->
-    <rect x="172" y="133" width="2" height="2" fill="#0D1117"/>
-    <!-- Mouth line -->
-    <rect x="170" y="137" width="8" height="1" fill="#0D1117"/>
-    <!-- Neck / body bottom -->
-    <rect x="148" y="149" width="14" height="4" fill="#D97706"/>
-    <rect x="152" y="153" width="12" height="4" fill="#D97706"/>
-    <!-- Belly highlight -->
-    <rect x="152" y="149" width="6" height="4" fill="#F59E0B" opacity="0.5"/>
+    <rect x="8" y="132" width="4" height="4" fill="#0D1117"/>
+    <!-- Mouth -->
+    <rect x="4" y="138" width="14" height="2" fill="#0D1117"/>
+
+    <!-- Neck / torso bottom -->
+    <rect x="-36" y="160" width="20" height="8" fill="#D97706"/>
+    <rect x="-30" y="168" width="16" height="8" fill="#D97706"/>
+
+    <!-- Belly -->
+    <rect x="-30" y="160" width="10" height="8" fill="#F59E0B" opacity="0.4"/>
+
     <!-- Tail -->
-    <rect x="134" y="147" width="6" height="2" fill="#D97706"/>
-    <rect x="128" y="149" width="6" height="2" fill="#D97706"/>
-    <rect x="124" y="151" width="4" height="2" fill="#D97706"/>
-    <rect x="120" y="153" width="4" height="2" fill="#D97706"/>
-    <rect x="118" y="155" width="2" height="2" fill="#D97706"/>
-    <!-- Legs - back -->
-    <rect x="148" y="157" width="4" height="6" fill="#D97706"/>
-    <rect x="148" y="163" width="4" height="2" fill="#D97706"/>
-    <rect x="144" y="165" width="4" height="2" fill="#D97706"/>
-    <!-- Legs - front -->
-    <rect x="160" y="157" width="4" height="6" fill="#F59E0B" opacity="0.8"/>
-    <rect x="160" y="163" width="4" height="2" fill="#F59E0B" opacity="0.8"/>
-    <rect x="164" y="165" width="4" height="2" fill="#F59E0B" opacity="0.8"/>
+    <rect x="-48" y="156" width="8" height="4" fill="#D97706"/>
+    <rect x="-56" y="160" width="8" height="4" fill="#D97706"/>
+    <rect x="-62" y="164" width="6" height="4" fill="#D97706"/>
+    <rect x="-64" y="168" width="4" height="4" fill="#D97706"/>
+
+    <!-- Back spikes -->
+    <rect x="-28" y="134" width="6" height="4" fill="#FBBF24"/>
+    <rect x="-36" y="138" width="6" height="4" fill="#FBBF24"/>
+    <rect x="-42" y="144" width="4" height="4" fill="#FBBF24"/>
+
+    <!-- Back leg -->
+    <rect x="-34" y="176" width="8" height="12" fill="#D97706"/>
+    <rect x="-34" y="188" width="6" height="4" fill="#D97706"/>
+    <rect x="-38" y="192" width="6" height="4" fill="#D97706"/>
+
+    <!-- Front leg -->
+    <rect x="-14" y="176" width="8" height="12" fill="#F59E0B" opacity="0.7"/>
+    <rect x="-14" y="188" width="6" height="4" fill="#F59E0B" opacity="0.7"/>
+    <rect x="-10" y="192" width="8" height="4" fill="#F59E0B" opacity="0.7"/>
+
     <!-- Arm -->
-    <rect x="166" y="143" width="2" height="4" fill="#D97706"/>
-    <rect x="168" y="145" width="2" height="2" fill="#D97706"/>
-    <!-- Spikes on back -->
-    <rect x="150" y="137" width="4" height="2" fill="#FBBF24"/>
-    <rect x="142" y="139" width="4" height="2" fill="#FBBF24"/>
-    <rect x="138" y="143" width="2" height="2" fill="#FBBF24"/>
+    <rect x="0" y="148" width="4" height="8" fill="#D97706"/>
+    <rect x="4" y="154" width="4" height="4" fill="#D97706"/>
   </g>
 
-  <!-- ====== PIXEL CACTUS (with simple style) ====== -->
-  <g fill="#D97706" opacity="0.3">
-    <!-- Cactus 1 -->
-    <rect x="680" y="169" width="4" height="26"/>
-    <rect x="678" y="173" width="2" height="6"/>
-    <rect x="686" y="177" width="2" height="6"/>
-    <!-- Cactus 2 (smaller) -->
-    <rect x="720" y="175" width="4" height="20"/>
-    <rect x="718" y="179" width="2" height="5"/>
-  </g>
+  <!-- ====== TEXT "trungvi" (shakes when dino lands) ====== -->
+  <g class="text-group" text-anchor="middle">
+    <text x="400" y="118" font-family="'Courier New','Consolas',monospace" font-weight="bold"
+          font-size="50" letter-spacing="8" fill="#D97706" filter="url(#glow)"
+          class="text-glow">trungvi</text>
 
-  <!-- ====== CENTER TEXT ====== -->
-  <g text-anchor="middle">
-    <text x="400" y="115" font-family="'Courier New','Consolas',monospace" font-weight="bold"
-          font-size="50" letter-spacing="8" fill="#D97706" filter="url(#soft-glow)">trungvi</text>
-
-    <text x="400" y="148" font-family="'Courier New','Consolas',monospace"
+    <text x="400" y="152" font-family="'Courier New','Consolas',monospace"
           font-size="12" letter-spacing="6" fill="#6B7280">AI  ·  ENGINEER</text>
 
-    <!-- Blinking cursor -->
-    <rect x="508" y="92" width="8" height="24" fill="#D97706" class="cursor"/>
+    <rect x="508" y="94" width="8" height="24" fill="#D97706" class="cursor"/>
   </g>
 
-  <!-- Pixel stars -->
-  <g fill="#D97706" opacity="0.25">
-    <rect x="90" y="50" width="2" height="2">
-      <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2s" repeatCount="indefinite"/>
+  <!-- Stars -->
+  <g fill="#D97706">
+    <rect x="80" y="45" width="3" height="3" opacity="0.2">
+      <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2s" repeatCount="indefinite"/>
     </rect>
-    <rect x="650" y="55" width="2" height="2">
+    <rect x="680" y="50" width="3" height="3" opacity="0.2">
       <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.5s" repeatCount="indefinite"/>
     </rect>
-    <rect x="380" y="35" width="2" height="2">
+    <rect x="350" y="30" width="2" height="2" opacity="0.15">
       <animate attributeName="opacity" values="0.1;0.5;0.1" dur="3s" repeatCount="indefinite"/>
     </rect>
-    <rect x="550" y="40" width="2" height="2">
+    <rect x="550" y="35" width="2" height="2" opacity="0.15">
       <animate attributeName="opacity" values="0.3;0.1;0.3" dur="1.8s" repeatCount="indefinite"/>
     </rect>
   </g>
